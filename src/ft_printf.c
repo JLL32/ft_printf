@@ -2,7 +2,7 @@
 
 int main()
 {
-	char *s = "wa %s l9lawi";
-	char *ss = "zbi";
+	char *s = "ya %s mo7arib";
+	char *ss = "tabban";
 	printf(s, ss);
 }
