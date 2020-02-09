@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:08:34 by mhaddi            #+#    #+#             */
-/*   Updated: 2020/01/23 17:41:01 by mhaddi           ###   ########.fr       */
+/*   Updated: 2020/02/09 23:13:31 by jll32            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,12 @@ int	ft_printf(const char *s, ...)
 	minusflag_found = 0;
 	zeroflag_found = 0;
 	precisiondot_found = 0;
-	mfwidth_found = 0;
 	mfwidth_val = 0;
 	precision_val = -1;	// if a precision is zero, it doesn't mean that
 				// there is no precision, it applies a precision of 0
 				// that's why the intialization is set to negative
 				// if there was no precision specified it will be set to negative
-	
+
 	counter = 0; 	// this counts the number of characters that will be printed
 			// this is the value printf returns
 
