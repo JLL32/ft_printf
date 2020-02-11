@@ -12,8 +12,7 @@ int	isspecifier(char str)
 	return (0);
 }
 
-int num_check(char *str)	// checks the nature of the precision or mfw's values
-				// and then converts it to an int
+int num_check(char *str)	// checks the nature of the precision or mfw's values				// and then converts it to an int
 {
 	int num;
 
@@ -109,6 +108,26 @@ int	ft_printf(const char *s, ...)
 
 		/* reinitialize data here */
 	}
+
+	// while (*s)
+	// {
+	// 	if(*s=='%')
+	// 	{
+	// 		s++;
+	// 		if (isspecifier(*s))
+	// 		{
+	// 			specifier_handler(*s);
+	// 		}
+	// 		else if (isflag)
+	// 		{
+	// 			flag_handler(*s);
+	// 		}
+	// 	}
+	// 	else
+	// 		ft_putchar_fd(*s, 1);
+	// 	s++;
+	// }
+
 
 	return (counter);
 }
