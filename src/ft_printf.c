@@ -6,14 +6,15 @@
 /*   By: ael-hach <ael-hach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 08:35:53 by ael-hach          #+#    #+#             */
-/*   Updated: 2020/02/15 08:46:10 by ael-hach         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:54:00 by ael-hach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "libftprintf.h"
+#include "router.c"
 
-/*
+/**
 ** int ft_printf(const char *s, ...)
 ** @brief prints a formatted text in the standard output
 ** @param s takes a string to format later
@@ -21,8 +22,22 @@
 ** @return returns the length of the printed text
 ** TODO: Find a better way the implement the body of printf
 */
-
 int	ft_printf(const char *s, ...)
 {
+	va_start(arg_list, s);
+	while (*s)
+	{
+		if(*s == '%')
+		{
+			router((char **)&s, va_arg(arg_list, void *));
+		}
+		else
+		{
+			write(1, s, 1);
+			counter++;
+			s++;
+		}
+	}
+	va_end(arg_list);
 	return (counter);
 }
