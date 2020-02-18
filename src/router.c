@@ -15,12 +15,19 @@
 void router(char **str, void *arg)
 {
 	*str++;
-	if (IS_SPECIFIER(**str))
+	if (**str == '%')
 	{
-
+		write(1, *str,1);
+		counter++;
 	}
-	else if(IS_FLAG(**str))
-	{
-
-	}
+	else if (IS_FLAG(**str))
+		get_flag();
+	else if(IS_WIDTH())
+		get_width();
+	else if (IS_PRECISION())
+		get_precision();
+	else if (IS_LENGTH())
+		get_length();
+	else if (IS_SPECIFIER(**str))
+		get_specifier();
 }

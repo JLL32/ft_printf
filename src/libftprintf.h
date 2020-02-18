@@ -10,4 +10,11 @@ int		counter;
 
 int		ft_printf(const char *s, ...);
 void	router(char **str, void *arg);
+
+
+typedef struct s_format
+{
+	/* data */
+} t_format;
+
 #endif

@@ -25,6 +25,7 @@
 int	ft_printf(const char *s, ...)
 {
 	va_start(arg_list, s);
+	counter = 0;
 	while (*s)
 	{
 		if(*s == '%')
