@@ -27,6 +27,7 @@ int	ft_printf(const char *s, ...)
 	va_start(g_arg_list, s);
 	g_counter = 0;
 	g_str = (char *)s;
+	init_struct();
 	while (*s)
 	{
 		if (*s == '%')
