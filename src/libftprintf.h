@@ -15,6 +15,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 /*
 ** TODO: Finish the macro IS_SPECIFIER
@@ -26,16 +27,14 @@
 va_list			g_arg_list;
 int				g_counter;
 int				ft_printf(const char *s, ...);
-void			router(char **str, void *arg);
+void			router_lvl1();
 typedef struct	s_format
 {
-	char	*str;
 	char	flag;
 	int		width;
 	int		precision;
 	char	length;
 	char	specifier;
-	int		counter;
 	void	*arg;
 }				t_format;
 char		*g_str;

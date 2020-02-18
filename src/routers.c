@@ -11,27 +11,28 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "validators.c"
 
-void router_lvl1(char **str, void *arg)
+void	router_lvl1()
 {
 	if (**str == '%')
 	{
 		write(1, *str,1);
 		counter++;
 	}
-	else if (IS_FLAG(**str))
+	else if (is_flag())
 		get_flag();
-	else if(IS_WIDTH(**str))
+	else if(is_width())
 		get_width();
-	else if (IS_PRECISION(**str))
+	else if (is_precision())
 		get_precision();
-	else if (IS_LENGTH(**str))
+	else if (is_length())
 		get_length();
-	else if (IS_SPECIFIER(**str))
+	else if (is_specifier())
 		get_specifier();
 }
 
-void router_lvl2(char **str, void *arg)
+void	router_lvl2(char **str, void *arg)
 {
 	if (IS_WIDTH(**str))
 		get_width();
@@ -43,7 +44,7 @@ void router_lvl2(char **str, void *arg)
 		get_specifier();
 }
 
-void router_lvl3(char **str, void *arg)
+void	router_lvl3(char **str, void *arg)
 {
 	if (IS_PRECISION(**str))
 		get_precision();
@@ -53,14 +54,14 @@ void router_lvl3(char **str, void *arg)
 		get_specifier();
 }
 
-void router_lvl4(char **str, void *arg)
+void	router_lvl4(char **str, void *arg)
 {
 	if (IS_LENGTH(**str))
 		get_length();
 	else if (IS_SPECIFIER(**str))
 		get_specifier();
 }
-void router_lvl5(char **str, void *arg)
+void	router_lvl5(char **str, void *arg)
 {
 	if (IS_LENGTH(**str))
 		get_length();

@@ -12,7 +12,7 @@
 
 #include "libft/libft.h"
 #include "libftprintf.h"
-#include "router.c"
+#include "routers.c"
 
 /**
 ** int ft_printf(const char *s, ...)
@@ -31,7 +31,7 @@ int	ft_printf(const char *s, ...)
 		if (*s == '%')
 		{
 			s++;
-			router((char **)&s, va_arg(arg_list, void *));
+			router_lvl1();
 		}
 		else
 		{
