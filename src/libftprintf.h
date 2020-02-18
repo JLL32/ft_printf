@@ -16,32 +16,28 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/**
- * TODO: Finish the macro IS_SPECIFIER
- * TODO: Create the macro IS_FLAG
- * TODO: Create the macro IS_WIDTH
- * TODO: Create the macro IS_PRECISION
- * TODO: Create the macro IS_LENGTH
+/*
+** TODO: Finish the macro IS_SPECIFIER
+** TODO: Create the macro IS_FLAG
+** TODO: Create the macro IS_WIDTH
+** TODO: Create the macro IS_PRECISION
+** TODO: Create the macro IS_LENGTH
 */
-#define IS_SPECIFIER(c) (c) == 'd' || (c) == 'i' || (c) == 'x ' || (c) == 'X' || (c) == 'u';
-va_list arg_list;
-char	specifier;
-int		counter;
-
-int		ft_printf(const char *s, ...);
-void	router(char **str, void *arg);
-
-
-typedef struct s_format
+va_list			g_arg_list;
+int				g_counter;
+int				ft_printf(const char *s, ...);
+void			router(char **str, void *arg);
+typedef struct	s_format
 {
-	char flag;
-	int width;
-	int precision;
-	char length;
-	char specifier;
-} t_format;
-
+	char	*str;
+	char	flag;
+	int		width;
+	int		precision;
+	char	length;
+	char	specifier;
+	int		counter;
+	void	*arg;
+}				t_format;
 char		*g_str;
 t_format	g_format;
-
 #endif
