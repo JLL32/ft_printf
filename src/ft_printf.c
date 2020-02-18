@@ -24,8 +24,9 @@
 */
 int	ft_printf(const char *s, ...)
 {
-	va_start(arg_list, s);
-	counter = 0;
+	va_start(g_arg_list, s);
+	g_counter = 0;
+	g_str = (char *)s;
 	while (*s)
 	{
 		if (*s == '%')
@@ -36,10 +37,20 @@ int	ft_printf(const char *s, ...)
 		else
 		{
 			write(1, s, 1);
-			counter++;
+			g_counter++;
 			s++;
 		}
 	}
-	va_end(arg_list);
-	return (counter);
+	va_end(g_arg_list);
+	return (g_counter);
+}
+
+int	init_struct()
+{
+	g_format.flag = '\0';
+	g_format.width = 0;
+	g_format.precision = 0;
+	g_format.length = '\0';
+	g_format.specifier = '\0';
+	g_format.arg = NULL;
 }
