@@ -28,8 +28,9 @@ int	ft_printf(const char *s, ...)
 	counter = 0;
 	while (*s)
 	{
-		if(*s == '%')
+		if (*s == '%')
 		{
+			s++;
 			router((char **)&s, va_arg(arg_list, void *));
 		}
 		else
