@@ -2,25 +2,25 @@
 
 bool is_flag()
 {
-	return true;
+	return (*g_str == '+' || *g_str == '-' || *g_str == '#' || *g_str == '*' || *g_str == '0' ? true : false);
 }
 
 bool is_width()
 {
-	return true;
+	return (*g_str > 48 && *g_str <= 57 ? true : false);
 }
 
 bool is_precision()
 {
-	return true;
+	return (*g_str == '.' ? true : false);
 }
 
 bool is_length()
 {
-	return true;
+	return (*g_str == 'l' || *g_str == 'h' ? true : false);
 }
 
 bool is_specifier()
 {
-	return true;
+	return (*g_str == 'd' || *g_str == 'i' || *g_str == 'u' || *g_str == 'x' || *g_str == 'X' );
 }
