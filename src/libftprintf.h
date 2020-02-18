@@ -17,16 +17,10 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-/*
-** TODO: Finish the macro IS_SPECIFIER
-** TODO: Create the macro IS_FLAG
-** TODO: Create the macro IS_WIDTH
-** TODO: Create the macro IS_PRECISION
-** TODO: Create the macro IS_LENGTH
-*/
 va_list			g_arg_list;
 int				g_counter;
 int				ft_printf(const char *s, ...);
+int				init_struct();
 void			router_lvl1();
 typedef struct	s_format
 {
@@ -37,6 +31,6 @@ typedef struct	s_format
 	char	specifier;
 	void	*arg;
 }				t_format;
-char		*g_str;
-t_format	g_format;
+char			*g_str;
+t_format		g_format;
 #endif

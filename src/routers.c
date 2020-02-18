@@ -15,10 +15,10 @@
 
 void	router_lvl1()
 {
-	if (**str == '%')
+	if (*g_str == '%')
 	{
-		write(1, *str,1);
-		counter++;
+		write(1, g_str,1);
+		g_counter++;
 	}
 	else if (is_flag())
 		get_flag();
