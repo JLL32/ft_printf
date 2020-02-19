@@ -32,39 +32,41 @@ void	router_lvl1()
 		get_specifier();
 }
 
-void	router_lvl2(char **str, void *arg)
+void	router_lvl2()
 {
-	if (IS_WIDTH(**str))
+	if (is_flag())
+		get_flag();
+	else if (is_width())
 		get_width();
-	else if (IS_PRECISION(**str))
+	else if (is_precision())
 		get_precision();
-	else if (IS_LENGTH(**str))
+	else if (is_length())
 		get_length();
-	else if (IS_SPECIFIER(**str))
+	else if (is_specifier())
 		get_specifier();
 }
 
-void	router_lvl3(char **str, void *arg)
+void	router_lvl3()
 {
-	if (IS_PRECISION(**str))
+	if (is_precision())
 		get_precision();
-	else if (IS_LENGTH(**str))
+	else if (is_length())
 		get_length();
-	else if (IS_SPECIFIER(**str))
+	else if (is_specifier())
 		get_specifier();
 }
 
-void	router_lvl4(char **str, void *arg)
+void	router_lvl4()
 {
-	if (IS_LENGTH(**str))
+	if (is_length())
 		get_length();
-	else if (IS_SPECIFIER(**str))
+	else if (is_specifier())
 		get_specifier();
 }
-void	router_lvl5(char **str, void *arg)
+void	router_lvl5()
 {
-	if (IS_LENGTH(**str))
+	if (is_length())
 		get_length();
-	else if (IS_SPECIFIER(**str))
+	else if (is_specifier())
 		get_specifier();
 }
