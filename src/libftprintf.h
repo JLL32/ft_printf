@@ -24,7 +24,7 @@ void			init_struct();
 void			router_lvl1();
 typedef struct	s_format
 {
-	char	flag[4];
+	char	flags[4];
 	int		width;
 	int		precision;
 	char	length;
