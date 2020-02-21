@@ -22,7 +22,7 @@
 ** @return returns the length of the printed text
 ** TODO: Find a better way the implement the body of printf
 */
-int	ft_printf(const char *s, ...)
+int		ft_printf(const char *s, ...)
 {
 	va_start(g_arg_list, s);
 	g_counter = 0;
@@ -46,7 +46,7 @@ int	ft_printf(const char *s, ...)
 	return (g_counter);
 }
 
-int	init_struct()
+void	init_struct()
 {
 	g_format.flag = '\0';
 	g_format.width = 0;
@@ -54,4 +54,5 @@ int	init_struct()
 	g_format.length = '\0';
 	g_format.specifier = '\0';
 	g_format.arg = NULL;
+	return;
 }

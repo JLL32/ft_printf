@@ -20,11 +20,11 @@
 va_list			g_arg_list;
 int				g_counter;
 int				ft_printf(const char *s, ...);
-int				init_struct();
+void			init_struct();
 void			router_lvl1();
 typedef struct	s_format
 {
-	char	flag;
+	char	flag[4];
 	int		width;
 	int		precision;
 	char	length;
