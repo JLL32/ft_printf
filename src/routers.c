@@ -13,60 +13,21 @@
 #include "libftprintf.h"
 #include "validators.c"
 
-void	router_lvl1()
+void	router_lvl(int lvl)
 {
-	if (*g_str == '%')
+	if (*g_str == '%' && lvl <= 1)
 	{
 		write(1, g_str,1);
 		g_counter++;
 	}
-	else if (is_flag())
+	else if (is_flag() && lvl <= 2)
 		get_flag();
-	else if(is_width())
+	else if(is_width() && lvl <= 3)
 		get_width();
-	else if (is_precision())
+	else if (is_precision() && lvl <= 4)
 		get_precision();
-	else if (is_length())
+	else if (is_length() && lvl <= 5)
 		get_length();
-	else if (is_specifier())
-		get_specifier();
-}
-
-void	router_lvl2()
-{
-	if (is_flag())
-		get_flag();
-	else if (is_width())
-		get_width();
-	else if (is_precision())
-		get_precision();
-	else if (is_length())
-		get_length();
-	else if (is_specifier())
-		get_specifier();
-}
-
-void	router_lvl3()
-{
-	if (is_precision())
-		get_precision();
-	else if (is_length())
-		get_length();
-	else if (is_specifier())
-		get_specifier();
-}
-
-void	router_lvl4()
-{
-	if (is_length())
-		get_length();
-	else if (is_specifier())
-		get_specifier();
-}
-void	router_lvl5()
-{
-	if (is_length())
-		get_length();
-	else if (is_specifier())
+	else if (is_specifier() && lvl <= 6)
 		get_specifier();
 }
