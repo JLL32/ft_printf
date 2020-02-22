@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "validators.c"
 
 void	router_lvl(int lvl)
 {
@@ -30,4 +29,22 @@ void	router_lvl(int lvl)
 		get_length();
 	else if (is_specifier() && lvl <= 6)
 		get_specifier();
+	return;
+}
+
+void	router_specifier()
+{
+	if (g_format.specifier == 'd'
+	|| g_format.specifier == 'i'
+	|| g_format.specifier == 'x'
+	|| g_format.specifier == 'X'
+	|| g_format.specifier == 'u')
+		print_integer();
+	else if (g_format.specifier == 'p')
+		print_pointer();
+	else if (g_format.specifier == 's')
+		print_string();
+	else if (g_format.specifier == 'c')
+		print_char();
+	return;
 }
