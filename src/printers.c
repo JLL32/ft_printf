@@ -1,6 +1,6 @@
 #include "libftprintf.h"
 
-void	print_integer()
+void	print_integer(void)
 {
 	/**
 	 * TODO: Implement the flag
@@ -8,17 +8,17 @@ void	print_integer()
 	return;
 }
 
-void	print_pointer()
+void	print_pointer(void)
 {
 	return;
 }
 
-void	print_string()
+void	print_string(void)
 {
 	return;
 }
 
-void	print_char()
+void	print_char(void)
 {
 
 	write(1,(char *)g_format.arg,1);

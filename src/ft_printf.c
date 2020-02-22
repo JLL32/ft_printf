@@ -45,7 +45,7 @@ int		ft_printf(const char *s, ...)
 	return (g_counter);
 }
 
-void	init_struct()
+void	init_struct(void)
 {
 	g_format.flags[0] = 0;
 	g_format.flags[1] = 0;
@@ -56,5 +56,5 @@ void	init_struct()
 	g_format.length = '\0';
 	g_format.specifier = '\0';
 	g_format.arg = NULL;
-	return;
+	return ;
 }

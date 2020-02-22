@@ -21,19 +21,19 @@
 va_list			g_arg_list;
 int				g_counter;
 int				ft_printf(const char *s, ...);
-void			init_struct();
+void			init_struct(void);
 void			router_lvl(int lvl);
-void			router_specifier();
-bool			is_flag();
-bool			is_width();
-bool			is_precision();
-bool			is_length();
-bool			is_specifier();
-void			get_flag();
-void			get_width();
-void			get_precision();
-void			get_length();
-void			get_specifier();
+void			router_specifier(void);
+bool			is_flag(void);
+bool			is_width(void);
+bool			is_precision(void);
+bool			is_length(void);
+bool			is_specifier(void);
+void			get_flag(void);
+void			get_width(void);
+void			get_precision(void);
+void			get_length(void);
+void			get_specifier(void);
 typedef struct s_format
 {
 	char	flags[4];

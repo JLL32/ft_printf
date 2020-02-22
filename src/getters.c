@@ -2,7 +2,7 @@
 #include "routers.c"
 #include "libft/libft.h"
 
-void	get_flag()
+void	get_flag(void)
 {
 	int i;
 
@@ -22,7 +22,7 @@ void	get_flag()
 	return;
 }
 
-void	get_width()
+void	get_width(void)
 {
 	while (ft_isdigit(*g_str))
 	{
@@ -34,7 +34,7 @@ void	get_width()
 	return;
 }
 
-void	get_precision()
+void	get_precision(void)
 {
 	g_str++;
 	while (ft_isdigit(*g_str))
@@ -47,7 +47,7 @@ void	get_precision()
 	return;
 }
 
-void	get_length()
+void	get_length(void)
 {
 	g_format.length = *g_str;
 	g_str++;
@@ -55,7 +55,7 @@ void	get_length()
 	return;
 }
 
-void	get_specifier()
+void	get_specifier(void)
 {
 	g_format.specifier = *g_str;
 	g_str++;

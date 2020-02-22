@@ -27,7 +27,7 @@ void	router_lvl(int lvl)
 	return;
 }
 
-void	router_specifier()
+void	router_specifier(void)
 {
 	if (g_format.specifier == 'd'
 	|| g_format.specifier == 'i'
