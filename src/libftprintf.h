@@ -16,12 +16,18 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "libft/libft.h"
 
 va_list			g_arg_list;
 int				g_counter;
 int				ft_printf(const char *s, ...);
 void			init_struct();
 void			router_lvl(int lvl);
+bool			is_flag();
+bool			is_width();
+bool			is_precision();
+bool			is_length();
+bool			is_specifier();
 void			get_flag();
 void			get_width();
 void			get_precision();
