@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "libftprintf.h"
-#include "routers.c"
 
 /**
 ** int ft_printf(const char *s, ...)
@@ -33,7 +31,8 @@ int		ft_printf(const char *s, ...)
 		if (*s == '%')
 		{
 			s++;
-			router_lvl1();
+			g_format.arg = va_arg(g_arg_list, void *);
+			router_lvl(2);
 		}
 		else
 		{

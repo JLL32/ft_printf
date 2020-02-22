@@ -13,12 +13,12 @@ void	get_flag()
 		{
 			g_format.flags[i] = *g_str;
 			g_str++;
-			router_lvl(2);
+			router_lvl(1);
 			return;
 		}
 		i++;
 	}
-	router_lvl(3);
+	router_lvl(2);
 	return;
 }
 
@@ -30,7 +30,7 @@ void	get_width()
 		g_format.width += *g_str - 48;
 		g_str++;
 	}
-	router_lvl(4);
+	router_lvl(3);
 	return;
 }
 
@@ -43,7 +43,7 @@ void	get_precision()
 		g_format.precision += *g_str - 48;
 		g_str++;
 	}
-	router_lvl(5);
+	router_lvl(4);
 	return;
 }
 
@@ -51,7 +51,7 @@ void	get_length()
 {
 	g_format.length = *g_str;
 	g_str++;
-	router_lvl(6);
+	router_lvl(5);
 	return;
 }
 

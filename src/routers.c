@@ -14,20 +14,15 @@
 
 void	router_lvl(int lvl)
 {
-	if (*g_str == '%' && lvl <= 1)
-	{
-		write(1, g_str,1);
-		g_counter++;
-	}
-	else if (is_flag() && lvl <= 2)
+	if (is_flag() && lvl <= 1)
 		get_flag();
-	else if(is_width() && lvl <= 3)
+	else if(is_width() && lvl <= 2)
 		get_width();
-	else if (is_precision() && lvl <= 4)
+	else if (is_precision() && lvl <= 3)
 		get_precision();
-	else if (is_length() && lvl <= 5)
+	else if (is_length() && lvl <= 4)
 		get_length();
-	else if (is_specifier() && lvl <= 6)
+	else if (is_specifier() && lvl <= 5)
 		get_specifier();
 	return;
 }
@@ -46,5 +41,7 @@ void	router_specifier()
 		print_string();
 	else if (g_format.specifier == 'c')
 		print_char();
+	else if (g_format.specifier == '%')
+		print_percent();
 	return;
 }
