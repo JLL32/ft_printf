@@ -20,8 +20,20 @@ void	print_string(void)
 
 void	print_char(void)
 {
-
-	write(1,(char *)g_format.arg,1);
-	g_counter++;
 	return;
+}
+
+void	print_shared()
+{
+
+}
+
+void	ft_putchar(char c)
+{
+	/**
+	 * TODO: Move it later to libft
+	*/
+	g_counter++;
+	write(1, &c,1);
+	return ;
 }

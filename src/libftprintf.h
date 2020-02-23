@@ -34,6 +34,8 @@ void			get_width(void);
 void			get_precision(void);
 void			get_length(void);
 void			get_specifier(void);
+void			ft_putchar(char c);
+
 typedef struct s_format
 {
 	char	flags[4];
