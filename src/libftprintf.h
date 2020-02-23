@@ -21,7 +21,7 @@
 va_list			g_arg_list;
 int				g_counter;
 int				ft_printf(const char *s, ...);
-void			init_struct(void);
+void			init_format(void);
 void			router_lvl(int lvl);
 void			router_specifier(void);
 bool			is_flag(void);

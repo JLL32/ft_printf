@@ -25,11 +25,11 @@ int		ft_printf(const char *s, ...)
 	va_start(g_arg_list, s);
 	g_counter = 0;
 	g_str = (char *)s;
-	init_struct();
 	while (*s)
 	{
 		if (*s == '%')
 		{
+			init_format();
 			s++;
 			g_format.arg = va_arg(g_arg_list, void *);
 			router_lvl(2);
@@ -45,7 +45,7 @@ int		ft_printf(const char *s, ...)
 	return (g_counter);
 }
 
-void	init_struct(void)
+void	init_format(void)
 {
 	g_format.flags.zero = false;
 	g_format.flags.minus = false;
