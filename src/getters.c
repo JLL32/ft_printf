@@ -4,19 +4,38 @@
 
 void	get_flag(void)
 {
-	int i;
+	//int i;
 
-	i = 0;
-	while (i < 4)
+	//i = 0;
+	if(*g_str == '0')
 	{
-		if (g_format.flags[i] == 0)
-		{
-			g_format.flags[i] = *g_str;
-			g_str++;
-			router_lvl(1);
-			return ;
-		}
-		i++;
+		g_format.flags.zero = true;
+		g_str++;
+		router_lvl(1);
+	}
+	else if (*g_str == '-')
+	{
+		g_format.flags.minus = true;
+		g_str++;
+		router_lvl(1);
+	}
+	else if (*g_str == '+')
+	{
+		g_format.flags.plus = true;
+		g_str++;
+		router_lvl(1);
+	}
+	else if (*g_str == ' ')
+	{
+		g_format.flags.space = true;
+		g_str++;
+		router_lvl(1);
+	}
+	else if (*g_str == '#')
+	{
+		g_format.flags.hash = true;
+		g_str++;
+		router_lvl(1);
 	}
 	router_lvl(2);
 	return ;

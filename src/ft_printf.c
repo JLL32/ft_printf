@@ -47,10 +47,11 @@ int		ft_printf(const char *s, ...)
 
 void	init_struct(void)
 {
-	g_format.flags[0] = 0;
-	g_format.flags[1] = 0;
-	g_format.flags[2] = 0;
-	g_format.flags[3] = 0;
+	g_format.flags.zero = false;
+	g_format.flags.minus = false;
+	g_format.flags.plus = false;
+	g_format.flags.space = false;
+	g_format.flags.hash = false;
 	g_format.width = 0;
 	g_format.precision = 0;
 	g_format.length = '\0';

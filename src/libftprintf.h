@@ -34,11 +34,25 @@ void			get_width(void);
 void			get_precision(void);
 void			get_length(void);
 void			get_specifier(void);
+
+/**
+ *  Not final function
+*/
 void			ft_putchar(char c);
+/************************************************/
+
+typedef struct s_flags
+{
+	bool	zero;
+	bool	minus;
+	bool	plus;
+	bool	space;
+	bool	hash;
+}				t_flags;
 
 typedef struct s_format
 {
-	char	flags[4];
+	t_flags	flags;
 	int		width;
 	int		precision;
 	char	length;
