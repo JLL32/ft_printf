@@ -37,8 +37,12 @@ void			get_specifier(void);
 
 /**
  *  Not final function
+ *  Will be moved later to libft
 */
 void			ft_putchar(char c);
+void			ft_putstr(char *str);
+void			ft_putnbr(int n);
+size_t			numlen(long long num);
 /************************************************/
 
 typedef struct s_flags
