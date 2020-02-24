@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 CFLAGS = -Wall -Werror -Wextra
-SRC = ft_printf.c libftprintf.h
-OBJ = ft_printf.o
+SRC = ft_printf.c routers.c validators.c getters.c printers.c
+OBJ = ft_printf.o routers.o validators.o getters.o printers.o libft/libft.a
 # BSRC =
 # BOBJ =
 
@@ -10,7 +10,8 @@ all: $(NAME)
 $(NAME): $(SRC)
 	(cd libft; make)
 	gcc $(CFLAGS) -c $^
-	ar rcs $@ $(OBJ)
+	ar rc $@ $(OBJ)
+	ranlib libftprintf.a
 
 clean:
 	(cd libft; make clean)

@@ -3,15 +3,32 @@
 void	print_integer(void)
 {
 	int field_width = g_format.width - numlen(g_format.width);
-	if (field_width > 0)
+	if(g_format.specifier == 'd')
 	{
-		if (g_format.flags.zero || !g_format.flags.minus)
+		if (field_width > 0)
 		{
-			while(field_width--)
-				ft_putchar('0');
+			if (g_format.flags.zero || !g_format.flags.minus)
+			{
+				while(field_width--)
+					ft_putchar('0');
+				ft_putnbr((int)g_format.arg);
+			}
+			else if(g_format.flags.minus)
+			{
+				ft_putnbr((int)g_format.arg);
+				while(field_width--)
+					ft_putchar(' ');
+			}
+			else
+			{
+				while(field_width--)
+					ft_putchar(' ');
+				ft_putnbr((int)g_format.arg);
+			}
 		}
+		else
+			ft_putnbr((int)g_format.arg);
 	}
-	ft_putnbr((int)g_format.arg);
 	return;
 }
 
@@ -30,16 +47,18 @@ void	print_char(void)
 	return;
 }
 
-void	print_shared()
+void	print_percent(void)
+{
+
+}
+
+void	print_shared(void)
 {
 
 }
 
 void	ft_putchar(char c)
 {
-	/**
-	 * TODO: Move it later to libft
-	*/
 	g_counter++;
 	write(1, &c,1);
 	return ;
@@ -74,9 +93,6 @@ void	ft_putnbr(int n)
 
 size_t numlen(long long num)
 {
-	/**
-	 * TODO: Move it later to libft
-	*/
 	size_t count;
 
 	count = 0;

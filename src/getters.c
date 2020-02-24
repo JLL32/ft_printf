@@ -1,5 +1,4 @@
 #include "libftprintf.h"
-#include "routers.c"
 #include "libft/libft.h"
 
 void	get_flag(void)

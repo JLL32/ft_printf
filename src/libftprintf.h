@@ -18,8 +18,6 @@
 # include <stdbool.h>
 # include "libft/libft.h"
 
-va_list			g_arg_list;
-int				g_counter;
 int				ft_printf(const char *s, ...);
 void			init_format(void);
 void			router_lvl(int lvl);
@@ -35,6 +33,12 @@ void			get_precision(void);
 void			get_length(void);
 void			get_specifier(void);
 
+void			print_integer(void);
+void			print_pointer(void);
+void			print_string(void);
+void			print_char(void);
+void			print_shared(void);
+void			print_percent(void);
 /**
  *  Not final function
  *  Will be moved later to libft
@@ -63,6 +67,9 @@ typedef struct s_format
 	char	specifier;
 	void	*arg;
 }				t_format;
+
+va_list			g_arg_list;
+int				g_counter;
 char			*g_str;
 t_format		g_format;
 #endif

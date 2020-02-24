@@ -25,21 +25,21 @@ int		ft_printf(const char *s, ...)
 	va_start(g_arg_list, s);
 	g_counter = 0;
 	g_str = (char *)s;
-	while (*s)
+	while (*g_str)
 	{
-		if (*s == '%')
+		if (*g_str == '%')
 		{
 			init_format();
 			s++;
 			g_format.arg = va_arg(g_arg_list, void *);
-			router_lvl(2);
+			router_lvl(1);
 		}
 		else
 		{
 			write(1, s, 1);
 			g_counter++;
-			s++;
 		}
+		g_str++;
 	}
 	va_end(g_arg_list);
 	return (g_counter);
