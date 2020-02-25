@@ -6,15 +6,15 @@
             "command": "/usr/bin/clang",
             "args": [
                 "-g",
-				"${file}",
+				"${workspaceFolder}/src/main.c",
 				"-L",
-				"${fileDirname}",
+				"${workspaceFolder}/src",
 				"-lftprintf",
 				"-L",
-				"${fileDirname}/libft",
+				"${workspaceFolder}/src/libft",
 				"-lft",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "main"
             ],
             "options": {
                 "cwd": "/usr/bin"
