@@ -5,10 +5,26 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Launch",
+			"type": "lldb",
+			"request": "launch",
+			"program": "${workspaceFolder}/src/main.c",
+			"args": [
+				"-L",
+				"${fileDirname}",
+				"-lftprintf",
+				"-L",
+				"${fileDirname}/libft",
+				"-lft",
+                "-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			]
+		},
+		{
 			"name": "clang build and debug active file",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${fileDirname}/${fileBasenameNoExtension}",
+			"program": "${workspaceFolder}/src/main",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
