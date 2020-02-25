@@ -7,7 +7,12 @@
             "args": [
                 "-g",
 				"${file}",
-				"",
+				"-L",
+				"${fileDirname}",
+				"-lftprintf",
+				"-L",
+				"${fileDirname}/libft",
+				"-lft",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
