@@ -9,7 +9,8 @@
 int	main()
 {
 	//puts("Mine-------\n");
-	ft_printf("lmao %d %d\n", 5, 9);
+	ft_printf("lmao %05i, %-7i, %i, %d|\n", 5, 9, 10, 20);
+	printf("lmao %05i, %-7i, %i, %d|\n", 5, 9, 10, 20);
 	//puts("-----------\n");
 	//printf("lmao %-20d %20d\n", 5, 9);
 	return 0;
