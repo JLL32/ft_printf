@@ -8,17 +8,8 @@
 			"name": "Launch",
 			"type": "lldb",
 			"request": "launch",
-			"program": "${workspaceFolder}/src/main.c",
-			"args": [
-				"-L",
-				"${fileDirname}",
-				"-lftprintf",
-				"-L",
-				"${fileDirname}/libft",
-				"-lft",
-                "-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			]
+			"program": "${workspaceFolder}/src/main",
+			"args": []
 		},
 		{
 			"name": "clang build and debug active file",
