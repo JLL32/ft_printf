@@ -23,7 +23,7 @@ fclean: clean
 
 re: fclean all
 
-debug: $(SRC)
+debug: $(NAME)
 	gcc -g main.c $(CFLAGS) $^ -L ./libft -lft -o main
 
 # bonus: $(BSRC)
