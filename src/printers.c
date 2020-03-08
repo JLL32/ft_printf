@@ -2,12 +2,12 @@
 
 void	print_integer(void)
 {
-	int field_width = g_format.width - numlen(g_format.width);
-	if(g_format.specifier == 'd')
+	int field_width = g_format.width - numlen((int)g_format.arg);
+	if(g_format.specifier == 'd' || g_format.specifier == 'i')
 	{
 		if (field_width > 0)
 		{
-			if (g_format.flags.zero || !g_format.flags.minus)
+			if (g_format.flags.zero && !g_format.flags.minus)
 			{
 				while(field_width--)
 					ft_putchar('0');

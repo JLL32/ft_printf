@@ -36,7 +36,7 @@ int		ft_printf(const char *s, ...)
 		}
 		else
 		{
-			write(1, s, 1);
+			write(1, g_str, 1);
 			g_counter++;
 		}
 		g_str++;

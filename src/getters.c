@@ -3,9 +3,6 @@
 
 void	get_flag(void)
 {
-	//int i;
-
-	//i = 0;
 	if(*g_str == '0')
 	{
 		g_format.flags.zero = true;
@@ -36,24 +33,18 @@ void	get_flag(void)
 		g_str++;
 		router_lvl(1);
 	}
-	router_lvl(2);
+	//router_lvl(2);
 	return ;
 }
-
+/**
+ * TODO: Add the asterisk width later
+*/
 void	get_width(void)
 {
 	while (ft_isdigit(*g_str) || *g_str == '*')
 	{
-		if(*g_str == '*')
-		{
-			g_format.width = -42;
-			break ;
-		}
-		else
-		{
-			g_format.width *= 10;
-			g_format.width += *g_str - 48;
-		}
+		g_format.width *= 10;
+		g_format.width += *g_str - 48;
 		g_str++;
 	}
 	router_lvl(3);
@@ -84,7 +75,6 @@ void	get_length(void)
 void	get_specifier(void)
 {
 	g_format.specifier = *g_str;
-	g_str++;
 	router_specifier();
 	return ;
 }
