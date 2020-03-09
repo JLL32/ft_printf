@@ -27,6 +27,8 @@ bool			is_width(void);
 bool			is_precision(void);
 bool			is_length(void);
 bool			is_specifier(void);
+
+
 void			get_flag(void);
 void			get_width(void);
 void			get_precision(void);
@@ -43,9 +45,9 @@ void			print_percent(void);
  *  Not final function
  *  Will be moved later to libft
 */
-void			ft_putchar(char c);
-void			ft_putstr(char *str);
-void			ft_putnbr(int n);
+void			ft_putnchar(char c, size_t n);
+void			ft_putnstr(char *str, size_t n);
+void			ft_putnbr(long n);
 size_t			numlen(long long num);
 /************************************************/
 

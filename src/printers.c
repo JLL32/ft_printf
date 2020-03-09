@@ -3,33 +3,27 @@
 void	print_integer(void)
 {
 	int field_width = g_format.width - numlen((int)g_format.arg);
+	if(g_format.precision > (int)numlen((int)g_format.arg))
+		field_width += g_format.precision - g_format.width;
 	if(g_format.specifier == 'd' || g_format.specifier == 'i')
 	{
 		if (field_width > 0)
 		{
-			if (g_format.flags.zero && !g_format.flags.minus)
-			{
-				while(field_width--)
-					ft_putchar('0');
-				ft_putnbr((int)g_format.arg);
-			}
-			else if(g_format.flags.minus)
+			if(g_format.flags.minus)
 			{
 				ft_putnbr((int)g_format.arg);
-				while(field_width--)
-					ft_putchar(' ');
+				ft_putnchar(' ', field_width);
 			}
 			else
 			{
-				while(field_width--)
-					ft_putchar(' ');
+				ft_putnchar(g_format.flags.zero ? '0' : ' ', field_width);
 				ft_putnbr((int)g_format.arg);
 			}
 		}
 		else
 			ft_putnbr((int)g_format.arg);
 	}
-	return;
+	return ;
 }
 
 void	print_pointer(void)
@@ -57,38 +51,42 @@ void	print_shared(void)
 
 }
 
-void	ft_putchar(char c)
+void	ft_putnchar(char c, size_t n)
 {
-	g_counter++;
-	write(1, &c,1);
+
+	while(n--)
+	{
+		g_counter++;
+		write(1, &c, 1);
+	}
 	return ;
 }
 
-void	ft_putstr(char *str)
+void	ft_putnstr(char *str, size_t n)
 {
-	while (*str)
+	while (*str && n--)
 	{
-		ft_putchar(*str);
+		ft_putnchar(*str, 1);
 		str++;
 	}
+	return ;
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long n)
 {
-	if (n == -2147483648)
-		ft_putstr("-2147483648");
-	else if (n < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-n);
-	}
-	else if (n >= 10)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
-	else
-		ft_putchar(n + '0');
+		if (n < 0)
+		{
+			ft_putnchar('-', 1);
+			ft_putnbr(-n);
+		}
+		else if (n >= 10)
+		{
+			ft_putnbr(n / 10);
+			ft_putnchar(n % 10 + '0', 1);
+		}
+		else
+			ft_putnchar(n + '0', 1);
+	return ;
 }
 
 size_t numlen(long long num)
