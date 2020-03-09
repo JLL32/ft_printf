@@ -7,21 +7,23 @@
 
 int main()
 {
+	printf("%d\n", g_format.precision);
 	label(decimal_flag_zero);
 	test(decimal_flag_zero);
 	return 0;
 }
 
-void	test(tests)
+void test(tests)
 {
 	switch (tests)
 	{
 	case decimal_flag_zero:
-	DECIMAL_FLAG_ZERO
-	break;
+		ft_printf("lmao %05.10d, %010i|\n", 5, 9);
+		printf("lmao %05.10d, %010i|\n", 5, 9);
+		break;
 	case decimal_flag_minus:
-	DECIMAL_FLAG_MINUS
-	break;
+		DECIMAL_FLAG_MINUS
+		break;
 	default:
 		break;
 	}
