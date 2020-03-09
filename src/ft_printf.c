@@ -53,7 +53,7 @@ void	init_format(void)
 	g_format.flags.space = false;
 	g_format.flags.hash = false;
 	g_format.width = 0;
-	g_format.precision = 0;
+	g_format.precision = -1;
 	g_format.length = '\0';
 	g_format.specifier = '\0';
 	g_format.arg = NULL;
