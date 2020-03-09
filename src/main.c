@@ -9,8 +9,6 @@ int main()
 {
 	label(decimal_flag_zero);
 	test(decimal_flag_zero);
-	//label(decimal_flag_minus);
-	//test(decimal_flag_minus);
 	return 0;
 }
 
