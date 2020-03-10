@@ -7,9 +7,9 @@
 
 int main()
 {
-	printf("%d\n", g_format.precision);
 	label(decimal_flag_zero);
 	test(decimal_flag_zero);
+	printf("%d\n", g_format.precision);
 	return 0;
 }
 
