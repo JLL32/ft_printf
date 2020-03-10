@@ -9,14 +9,14 @@ void	print_integer(void)
 	{
 		if (field_width > 0)
 		{
-			if(g_format.flags.minus)
+			if(g_format.flags.minus && g_format.precision < 1)
 			{
 				ft_putnbr((int)g_format.arg);
 				ft_putnchar(' ', field_width);
 			}
 			else
 			{
-				ft_putnchar(g_format.flags.zero ? '0' : ' ', field_width);
+				ft_putnchar((g_format.flags.zero != (g_format.precision == 0)) || g_format.precision ? '0' : ' ', field_width);
 				ft_putnbr((int)g_format.arg);
 			}
 		}

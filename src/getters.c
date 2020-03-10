@@ -1,5 +1,6 @@
 #include "libftprintf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 void	get_flag(void)
 {
@@ -53,13 +54,19 @@ void	get_width(void)
 
 void	get_precision(void)
 {
+	//puts(g_str);
 	g_str++;
+	g_format.precision = 0;
 	while (ft_isdigit(*g_str))
 	{
+		//puts(g_str);
 		g_format.precision *= 10;
+		//printf("%d\n", g_format.precision);
 		g_format.precision += *g_str - 48;
+		//printf("%d\n", g_format.precision);
 		g_str++;
 	}
+	//printf("%d\n", g_format.precision);
 	router_lvl(4);
 	return ;
 }
