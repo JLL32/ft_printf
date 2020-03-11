@@ -47,8 +47,8 @@ void			print_percent(void);
 */
 void			ft_putnchar(char c, size_t n);
 void			ft_putnstr(char *str, size_t n);
-void			ft_putnbr(long n);
-size_t			numlen(long long num);
+void			ft_putnbr_base(long n, char base);
+size_t			numlen(long long num, char base);
 /************************************************/
 
 typedef struct s_flags
