@@ -19,6 +19,8 @@
 ** @param ... takes a list of arguments to imbed
 ** @return returns the length of the printed text
 ** TODO: Find a better way the implement the body of printf
+** NOTE: be careful with the conversion specifier 'e'
+** NOTE: be careful with the french version of the correcion instructions
 */
 int		ft_printf(const char *s, ...)
 {
