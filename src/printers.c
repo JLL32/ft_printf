@@ -82,6 +82,8 @@ void	cast_and_putnbr()
 			ft_putnbr_base((int)g_format.arg, g_format.specifier);
 		else if (g_format.specifier == 'u')
 			ft_putnbr_base((unsigned int)g_format.arg, g_format.specifier);
+		else if (g_format.specifier == 'x' || g_format.specifier == 'X')
+			ft_putnbr_base((int)g_format.arg, g_format.specifier);
 	}
 }
 
