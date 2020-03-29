@@ -14,11 +14,11 @@
 #define COLOR3 MAGENTA
 
 #define TEST(param)                                  \
-	puts("~~~~"COLOR3 #param RESET"~~~~");              \
+	puts("~~~~" COLOR3 #param RESET "~~~~");         \
 	ft_printf(COLOR2 "Result:" RESET " \t[" COLOR2); \
 	ft_printf(param);                                \
 	ft_printf(RESET "]\n");                          \
-	printf(COLOR1 "Expected:" RESET " \t["COLOR1);          \
+	printf(COLOR1 "Expected:" RESET " \t[" COLOR1);  \
 	printf(param);                                   \
 	printf(RESET "]\n");
 
