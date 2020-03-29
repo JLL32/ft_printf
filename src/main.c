@@ -7,34 +7,15 @@
 
 int main()
 {
-	label(decimal_flag_zero_precision);
-	test(decimal_flag_zero_precision);
-	return 0;
-}
+	// TEST(DECIMAL_FLAG_ZERO);
+	// TEST(DECIMAL_FLAG_MINUS);
+	// TEST(DECIMAL_FLAG_MINUSZERO);
+	// TEST(DECIMAL_PRECISION);
+	// TEST(DECIMAL_FLAG_ZERO_PRECISION);
+	// TEST(DECIMAL_FLAG_ZERO_PRECISION_NULL);
+	// TEST(DECIMAL_FLAG_MINUS_PRECISION);
+	// TEST(HEXA_PRECISION);
+	TEST(HEXA_FLAG_MINUS_PRECISION);
 
-void test(tests)
-{
-	switch (tests)
-	{
-	case decimal_flag_zero:
-		DECIMAL_FLAG_ZERO
-		break;
-	case decimal_flag_minus:
-		DECIMAL_FLAG_MINUS
-		break;
-	case decimal_precision:
-		DECIMAL_PRECISION
-		break;
-	case decimal_flag_zero_precision:
-		DECIMAL_FLAG_ZERO_PRECISION
-		break;
-	case decimal_flag_zero_precision_null:
-		DECIMAL_FLAG_ZERO_PRECISION_NULL
-		break;
-	case decimal_flag_minus_precision:
-		DECIMAL_FLAG_MINUS_PRECISION
-		break;
-	default:
-		break;
-	}
+	return 0;
 }
