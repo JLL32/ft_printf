@@ -39,4 +39,3 @@
 #define HEXA_FLAG_MINUS_PRECISION			"El psy congroo! %-.5x, %-.10X", 5, 9
 
 #define HEXA_PRECISION						"El psy congroo! %.5X, %.10x", 255, 1028
-
