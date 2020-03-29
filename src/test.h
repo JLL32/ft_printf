@@ -36,6 +36,6 @@
 
 #define DECIMAL_FLAG_MINUS_PRECISION		"El psy congroo! %-.5d, %-.10i", 5, 9
 
-#define HEXA_FLAG_MINUS_PRECISION			"El psy congroo! %-.5x, %-.10X", 5, 9
+#define HEXA_FLAG_MINUS_PRECISION			"El psy %-.5x, %-.10X congroo!", 255, 1228
 
-#define HEXA_PRECISION						"El psy congroo! %.5X, %.10x", 255, 1028
+#define HEXA_PRECISION						"El psy %.5X, %.10x congroo!", 255, 1228
