@@ -13,14 +13,18 @@
 #define COLOR2 BLUE
 #define COLOR3 MAGENTA
 
-#define TEST(param)                                  \
-	puts("\t~~~" COLOR3 #param RESET "~~~");         \
-	ft_printf(COLOR2 "Result:" RESET " \t[" COLOR2); \
-	ft_printf(param);                                \
-	ft_printf(RESET "]\n");                          \
-	printf(COLOR1 "Expected:" RESET " \t[" COLOR1);  \
-	printf(param);                                   \
-	printf(RESET "]\n");
+#define TEST(param)                                      \
+	{                                                    \
+		int a, b;                                        \
+		puts("\t~~~" COLOR3 #param RESET "~~~");         \
+		ft_printf(COLOR2 "Result:" RESET " \t[" COLOR2); \
+		a = ft_printf(param);                            \
+		ft_printf(RESET "]\n");                          \
+		printf(COLOR1 "Expected:" RESET " \t[" COLOR1);  \
+		b = printf(param);                               \
+		printf(RESET "]\n");                             \
+		puts(a == b ? "Length: OK" : "Length: Error");   \
+	}
 
 #define DECIMAL_FLAG_ZERO					"Elpsycongroo %05.10d, %010i", 5, 9
 
