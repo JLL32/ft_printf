@@ -42,7 +42,7 @@ void			print_char(void);
 void			print_shared(void);
 void			print_percent(void);
 /**
- *  Not final function
+ *  Not final functions
  *  Will be moved later to libft
 */
 void			ft_putnchar(char c, size_t n);

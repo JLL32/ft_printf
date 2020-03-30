@@ -14,7 +14,7 @@
 #define COLOR3 MAGENTA
 
 #define TEST(param)                                  \
-	puts("~~~~" COLOR3 #param RESET "~~~~");         \
+	puts("\t~~~" COLOR3 #param RESET "~~~");         \
 	ft_printf(COLOR2 "Result:" RESET " \t[" COLOR2); \
 	ft_printf(param);                                \
 	ft_printf(RESET "]\n");                          \
@@ -33,6 +33,8 @@
 #define DECIMAL_FLAG_ZERO_PRECISION			"El psy congroo! %0.5d, %0.10i", 5, 9
 
 #define DECIMAL_FLAG_ZERO_PRECISION_NULL	"El psy congroo! %0.0d, %0.0i", 5, 9
+
+#define DECIMAL_WIDTH_ASTERISK				"El psy congroo! %*.d", 5, 9
 
 #define DECIMAL_FLAG_MINUS_PRECISION		"El psy congroo! %-.5d, %-.10i", 5, 9
 
