@@ -33,7 +33,6 @@ int		ft_printf(const char *s, ...)
 		{
 			init_format();
 			g_str++;
-			g_format.arg = va_arg(g_arg_list, void *);
 			router_lvl(1);
 		}
 		else

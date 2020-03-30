@@ -42,31 +42,31 @@ void	get_flag(void)
 */
 void	get_width(void)
 {
-	while (ft_isdigit(*g_str) || *g_str == '*')
+	if(*g_str == '*')
 	{
-		g_format.width *= 10;
-		g_format.width += *g_str - 48;
+		g_format.width = va_arg(g_arg_list, int);
 		g_str++;
 	}
+	else
+		while (ft_isdigit(*g_str) || *g_str == '*')
+		{
+			g_format.width *= 10;
+			g_format.width += *g_str - 48;
+			g_str++;
+		}
 	router_lvl(3);
 	return ;
 }
 
 void	get_precision(void)
 {
-	//puts(g_str);
-	g_str++;
 	g_format.precision = 0;
 	while (ft_isdigit(*g_str))
 	{
-		//puts(g_str);
 		g_format.precision *= 10;
-		//printf("%d\n", g_format.precision);
 		g_format.precision += *g_str - 48;
-		//printf("%d\n", g_format.precision);
 		g_str++;
 	}
-	//printf("%d\n", g_format.precision);
 	router_lvl(4);
 	return ;
 }
