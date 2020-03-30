@@ -2,6 +2,7 @@
 
 void	print_integer(void)
 {
+	g_format.arg = va_arg(g_arg_list, void *);
 	int field_width = g_format.width - numlen((long long)g_format.arg, g_format.specifier);
 	if(g_format.precision > (int)numlen((long long)g_format.arg, g_format.specifier))
 		field_width += g_format.precision - g_format.width;
@@ -14,7 +15,10 @@ void	print_integer(void)
 		}
 		else
 		{
-			ft_putnchar((g_format.flags.zero != (g_format.precision == 0)) || g_format.precision ? '0' : ' ', field_width);
+			ft_putnchar(
+				(g_format.flags.zero != (g_format.precision == 0))
+				|| (g_format.precision != -1)
+				|| (g_format.specifier == 'X' || g_format.specifier == 'x') ? '0' : ' ', field_width);
 			cast_and_putnbr();
 		}
 	}
