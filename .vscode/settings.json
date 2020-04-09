@@ -1,3 +1,6 @@
 {
+	"files.associations": {
+		"libftprintf.h": "c"
+	}
 	//"peacock.color": "#8dc3a0"
 }
