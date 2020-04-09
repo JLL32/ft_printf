@@ -6,6 +6,9 @@ void	print_integer(void)
 	int field_width = g_format.width - numlen((long long)g_format.arg, g_format.specifier);
 	if(g_format.precision > (int)numlen((long long)g_format.arg, g_format.specifier))
 		field_width += g_format.precision - g_format.width;
+	if(g_format.flags.hash &&
+	(g_format.specifier == 'x' || g_format.specifier == 'X'))
+		ft_putnstr( g_format.specifier == 'x' ? "0x" : "0X", 3);
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus && g_format.precision < 1)
@@ -82,12 +85,10 @@ void	cast_and_putnbr()
 	}
 	else
 	{
-		if (g_format.specifier == 'd' || g_format.specifier == 'i')
+		 if (g_format.specifier == 'd' || g_format.specifier == 'i')
 			ft_putnbr_base((int)g_format.arg, g_format.specifier);
-		else if (g_format.specifier == 'u')
+		else if (g_format.specifier == 'u' || g_format.specifier == 'x' || g_format.specifier == 'X')
 			ft_putnbr_base((unsigned int)g_format.arg, g_format.specifier);
-		else if (g_format.specifier == 'x' || g_format.specifier == 'X')
-			ft_putnbr_base((int)g_format.arg, g_format.specifier);
 	}
 }
 
@@ -98,26 +99,24 @@ void ft_putnbr_base(long n, char base)
 {
 	size_t i;
 	long temp;
-	char hexaDeciNum[100];
+	char num[100];
 
 	if (n < 0)
-	{
-		ft_putnchar('-', 1);
-		n = -n;
-	}
+		ft_putnchar('-' , 1);
+	n = ABS(n);
 	i = 0;
 	while (n)
 	{
 		temp = 0;
 		temp = n % ((base == 'x' || base == 'X') ? 16 : 10);
 		if (temp < 10)
-			hexaDeciNum[i++] = temp + '0';
+			num[i++] = temp + '0';
 		else
-			hexaDeciNum[i++] = temp + (base == 'x' ? 87 : 55);
+			num[i++] = temp + (base == 'x' ? 87 : 55);
 		n = n / ((base == 'x' || base == 'X') ? 16 : 10);
 	}
 	while (i--)
-		ft_putnchar(hexaDeciNum[i], 1);
+		ft_putnchar(num[i], 1);
 }
 
 size_t numlen(long long num, char base)
