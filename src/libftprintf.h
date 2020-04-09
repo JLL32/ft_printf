@@ -18,6 +18,8 @@
 # include <stdbool.h>
 # include "libft/libft.h"
 
+# define ABS(x) (((x) <  0) ? -(x) : (x))
+
 int				ft_printf(const char *s, ...);
 void			init_format(void);
 void			router_lvl(int lvl);
