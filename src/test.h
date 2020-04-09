@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 #include "libftprintf.h"
 
 #define BLUE "\x1b[34m"
@@ -24,6 +25,7 @@
 		b = printf(param);                               \
 		printf(RESET "]\n");                             \
 		puts(a == b ? "Length: OK" : "Length: Error");   \
+		sleep(1);                                         \
 	}
 
 #define DECIMAL_FLAG_ZERO					"Elpsycongroo %05.10d, %010i", 5, 9
@@ -44,4 +46,16 @@
 
 #define HEXA_FLAG_MINUS_PRECISION			"El psy %-.5x, %-.10X congroo!", 255, 1228
 
-#define HEXA_PRECISION						"El psy %.5X, %.10x congroo!", 255, 1228
+#define HEXA_PRECISION						"El psy %.5X, %.10x congroo!", 214, 1228
+
+#define HEXA_FLAG_HASH_PRECISION			"El psy %#.5X, %#.10x congroo!", 214, 1228
+
+#define HEXA_FLAG_MINUS_HASH_PRECISION			"El psy %-#.5x, %-#.10X congroo!", 255, 1228
+
+
+#define INT16  short
+#define UINT16 unsigned short
+#define INT32  int
+#define UINT32 unsigned int
+#define INT64  long long
+#define UINT64 unsigned long long
