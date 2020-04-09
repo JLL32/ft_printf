@@ -1,10 +1,10 @@
 NAME = libftprintf.a
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -pedantic
 SRC = ft_printf.c routers.c validators.c getters.c printers.c
 OBJ = ft_printf.o routers.o validators.o getters.o printers.o libft/libft.a
 # BSRC =
 # BOBJ =
-
+# TODO: Add the header files as a dependency
 all: $(NAME)
 
 $(NAME): $(SRC)
