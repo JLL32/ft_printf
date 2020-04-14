@@ -4,11 +4,26 @@ void	print_integer(void)
 {
 	g_format.arg = va_arg(g_arg_list, void *);
 	int field_width = g_format.width - numlen((long long)g_format.arg, g_format.specifier);
+	/**
+	 ** The precision support
+	*/
 	if(g_format.precision > (int)numlen((long long)g_format.arg, g_format.specifier))
 		field_width += g_format.precision - g_format.width;
-	if(g_format.flags.hash &&
-	(g_format.specifier == 'x' || g_format.specifier == 'X'))
+	/**
+	 ** The # flag support
+	*/
+	if(g_format.flags.hash && (g_format.specifier == 'x' || g_format.specifier == 'X'))
 		ft_putnstr( g_format.specifier == 'x' ? "0x" : "0X", 3);
+	/**
+	 ** The + flag support
+	 */
+	if((g_format.specifier == 'd' || g_format.specifier == 'i') && g_format.flags.plus && g_format.arg > 0)
+		ft_putnchar('+', 1);
+	/**
+	 ** The space flag (The + flag overrides the space flag)
+	 */
+	else if((g_format.specifier == 'd' || g_format.specifier == 'i') && g_format.flags.space && g_format.arg > 0)
+		ft_putnchar(' ', 1);
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus && g_format.precision < 1)
@@ -18,8 +33,7 @@ void	print_integer(void)
 		}
 		else
 		{
-			ft_putnchar(
-				(g_format.flags.zero != (g_format.precision == 0))
+			ft_putnchar( (g_format.flags.zero != (g_format.precision == 0))
 				|| (g_format.precision != -1)
 				|| (g_format.specifier == 'X' || g_format.specifier == 'x') ? '0' : ' ', field_width);
 			cast_and_putnbr();
@@ -102,8 +116,10 @@ void ft_putnbr_base(long n, char base)
 	char num[100];
 
 	if (n < 0)
+	{
 		ft_putnchar('-' , 1);
-	n = ABS(n);
+		n = ABS(n);
+	}
 	i = 0;
 	while (n)
 	{
