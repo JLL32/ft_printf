@@ -16,7 +16,7 @@
 # define COLOR2 BLUE
 # define COLOR3 MAGENTA
 
-# define TEST(param)                                      \
+# define TEST(param)                                     \
  	{                                                    \
  		int a, b;                                        \
  		puts("\t~~~" COLOR3 #param RESET "~~~");         \
@@ -27,7 +27,7 @@
  		b = printf(param);                               \
  		printf(RESET "]\n");                             \
  		puts(a == b ? "Length: OK" : "Length: Error");   \
- 		sleep(1);                                         \
+ 		sleep(1);                                        \
  	}
 
 # define DECIMAL_FLAG_ZERO					"Elpsycongroo %05.10d, %010i", 5, 9
@@ -54,3 +54,7 @@
 
 # define HEXA_FLAG_MINUS_HASH_PRECISION			"El psy %-#.5x, %-#.10X congroo!", 255, 1228
 #endif // !TEST_H
+
+/*!
+** TODO: t_printf ("%x",0)
+*/
