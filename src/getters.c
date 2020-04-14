@@ -43,6 +43,11 @@ void	get_width(void)
 	if(*g_str == '*')
 	{
 		g_format.width = va_arg(g_arg_list, int);
+		if(g_format.width < 0)
+		{
+			g_format.width = ABS(g_format.width);
+			g_format.flags.minus = true;
+		}
 		g_str++;
 	}
 	else
