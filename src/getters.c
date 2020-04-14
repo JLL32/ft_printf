@@ -37,9 +37,7 @@ void	get_flag(void)
 	//router_lvl(2);
 	return ;
 }
-/**
- * TODO: Add the asterisk width later
-*/
+
 void	get_width(void)
 {
 	if(*g_str == '*')
