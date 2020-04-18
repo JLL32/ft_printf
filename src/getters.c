@@ -34,7 +34,6 @@ void	get_flag(void)
 		g_str++;
 		router_lvl(1);
 	}
-	//router_lvl(2);
 	return ;
 }
 
@@ -51,24 +50,38 @@ void	get_width(void)
 		g_str++;
 	}
 	else
-		while (ft_isdigit(*g_str) || *g_str == '*')
+	{
+		while (ft_isdigit(*g_str))
 		{
 			g_format.width *= 10;
 			g_format.width += *g_str - 48;
 			g_str++;
 		}
+	}
 	router_lvl(3);
 	return ;
 }
 
+/**
+** NOTE: A negative precision means the precision is unspecified.
+** If only the period is pre the precision is set to zero.
+*/
 void	get_precision(void)
 {
 	g_format.precision = 0;
-	while (ft_isdigit(*g_str))
+	if(*g_str == '*')
 	{
-		g_format.precision *= 10;
-		g_format.precision += *g_str - 48;
+		g_format.precision = va_arg(g_arg_list, int);
 		g_str++;
+	}
+	else
+	{
+		while (ft_isdigit(*g_str))
+		{
+			g_format.precision *= 10;
+			g_format.precision += *g_str - 48;
+			g_str++;
+		}
 	}
 	router_lvl(4);
 	return ;
