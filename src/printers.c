@@ -3,26 +3,32 @@
 void	print_integer(void)
 {
 	g_format.arg = va_arg(g_arg_list, void *);
-	int field_width = g_format.width - numlen((long long)g_format.arg, g_format.specifier);
+
+	int field_width = g_format.width -numlen((long)g_format.arg,
+	g_format.specifier);
 	/**
 	 ** The precision support
 	*/
-	if(g_format.precision > (int)numlen((long long)g_format.arg, g_format.specifier))
+	if(g_format.precision > (int)numlen(
+		(long)g_format.arg, g_format.specifier))
 		field_width += g_format.precision - g_format.width;
 	/**
 	 ** The # flag support
 	*/
-	if(g_format.flags.hash && (g_format.specifier == 'x' || g_format.specifier == 'X'))
+	if(g_format.flags.hash
+	&& (g_format.specifier == 'x' || g_format.specifier == 'X'))
 		ft_putnstr( g_format.specifier == 'x' ? "0x" : "0X", 3);
 	/**
 	 ** The + flag support
 	 */
-	if((g_format.specifier == 'd' || g_format.specifier == 'i') && g_format.flags.plus && g_format.arg > 0)
+	if((g_format.specifier == 'd' || g_format.specifier == 'i')
+	&& g_format.flags.plus && (long)g_format.arg > 0)
 		ft_putnchar('+', 1);
 	/**
 	 ** The space flag (The + flag overrides the space flag)
 	 */
-	else if((g_format.specifier == 'd' || g_format.specifier == 'i') && g_format.flags.space && g_format.arg > 0)
+	else if((g_format.specifier == 'd' || g_format.specifier == 'i')
+	&& g_format.flags.space && (long)g_format.arg > 0)
 		ft_putnchar(' ', 1);
 	if (field_width > 0)
 	{
@@ -34,8 +40,9 @@ void	print_integer(void)
 		else
 		{
 			ft_putnchar( (g_format.flags.zero != (g_format.precision == 0))
-				|| (g_format.precision != -1)
-				|| (g_format.specifier == 'X' || g_format.specifier == 'x') ? '0' : ' ', field_width);
+				|| (g_format.precision > 0)
+				|| (g_format.specifier == 'X' || g_format.specifier == 'x')
+				? '0' : ' ', field_width);
 			cast_and_putnbr();
 		}
 	}
@@ -70,7 +77,7 @@ void	print_shared(void)
 
 void	ft_putnchar(char c, size_t n)
 {
-	while(n--)
+	while (n--)
 	{
 		g_counter++;
 		write(1, &c, 1);
@@ -92,7 +99,9 @@ void	cast_and_putnbr()
 	{
 		if (g_format.length == 'l')
 			ft_putnbr_base((long)g_format.arg, g_format.specifier);
-		else if(g_format.length == 'h' || g_format.specifier == 'd' || g_format.specifier == 'i')
+		else if(g_format.length == 'h'
+		|| g_format.specifier == 'd'
+		|| g_format.specifier == 'i')
 			ft_putnbr_base((short)g_format.arg, g_format.specifier);
 		else if(g_format.length == 'h' || g_format.specifier == 'u')
 			ft_putnbr_base((unsigned short)g_format.arg, g_format.specifier);
@@ -101,7 +110,8 @@ void	cast_and_putnbr()
 	{
 		 if (g_format.specifier == 'd' || g_format.specifier == 'i')
 			ft_putnbr_base((int)g_format.arg, g_format.specifier);
-		else if (g_format.specifier == 'u' || g_format.specifier == 'x' || g_format.specifier == 'X')
+		else if (g_format.specifier == 'u' || g_format.specifier == 'x'
+		|| g_format.specifier == 'X')
 			ft_putnbr_base((unsigned int)g_format.arg, g_format.specifier);
 	}
 }
@@ -135,7 +145,7 @@ void ft_putnbr_base(long n, char base)
 		ft_putnchar(num[i], 1);
 }
 
-size_t numlen(long long num, char base)
+size_t numlen(long num, char base)
 {
 	size_t count;
 
@@ -143,7 +153,7 @@ size_t numlen(long long num, char base)
 	if (num < 0)
 	{
 		count += 1;
-		num *= -1;
+		num = ABS(num);
 	}
 	while (num)
 	{
