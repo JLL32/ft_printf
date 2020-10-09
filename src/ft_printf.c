@@ -20,7 +20,7 @@
 ** @return returns the length of the printed text
 ** TODO: Find a better way the implement the body of printf
 ** NOTE: be careful with the conversion specifier 'e'
-** NOTE: be careful with the french version of the correcion instructions
+** NOTE: be careful with the French version of the correction instructions
 */
 int		ft_printf(const char *s, ...)
 {
