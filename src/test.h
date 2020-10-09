@@ -27,7 +27,7 @@
  		b = printf(param);                               \
  		printf(RESET "]\n");                             \
  		puts(a == b ? "Length: OK" : "Length: Error");   \
- 		sleep(1);                                        \
+ 		sleep(0);                                        \
  	}
 
 # define DECIMAL_FLAG_ZERO					"Elpsycongroo %05.10d, %010i", 5, 9
