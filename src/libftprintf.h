@@ -51,22 +51,20 @@ void			ft_putnchar(char c, size_t n);
 void			ft_putnstr(char *str, size_t n);
 void			cast_and_putnbr();
 void			ft_putnbr_base(long n, char base);
-size_t			numlen(long long num, char base);
+size_t			numlen(long num, char base);
 /************************************************/
 
-typedef struct s_flags
+typedef struct
 {
-	bool	zero;
-	bool	minus;
-	bool	plus;
-	bool	space;
-	bool	hash;
-}				t_flags;
-
-typedef struct s_format
-{
-	t_flags	flags;
-	int		width;
+	struct
+	{
+		bool	zero;
+		bool	minus;
+		bool	plus;
+		bool	space;
+		bool	hash;
+	} flags;
+	int width;
 	int		precision;
 	char	length;
 	char	specifier;
