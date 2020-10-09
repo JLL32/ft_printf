@@ -5,13 +5,6 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch",
-			"type": "lldb",
-			"request": "launch",
-			"program": "${workspaceFolder}/src/main",
-			"args": []
-		},
-		{
 			"name": "clang build and debug active file",
 			"type": "cppdbg",
 			"request": "launch",
