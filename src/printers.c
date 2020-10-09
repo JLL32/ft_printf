@@ -17,7 +17,7 @@ void	print_integer(void)
 	*/
 	if(g_format.flags.hash
 	&& (g_format.specifier == 'x' || g_format.specifier == 'X'))
-		ft_putnstr( g_format.specifier == 'x' ? "0x" : "0X", 3);
+		ft_putnstr(g_format.specifier == 'x' ? "0x" : "0X", 3);
 	/**
 	 ** The + flag support
 	 */
@@ -39,7 +39,7 @@ void	print_integer(void)
 		}
 		else
 		{
-			ft_putnchar( (g_format.flags.zero != (g_format.precision == 0))
+			ft_putnchar((g_format.flags.zero != (g_format.precision == 0))
 				|| (g_format.precision > 0)
 				|| (g_format.specifier == 'X' || g_format.specifier == 'x')
 				? '0' : ' ', field_width);
@@ -48,6 +48,9 @@ void	print_integer(void)
 	}
 	else
 		cast_and_putnbr();
+	/**
+	** NOTE: Hexadecimals are unsigned int actually :)
+	*/
 }
 
 void	print_pointer(void)
@@ -67,7 +70,7 @@ void	print_char(void)
 
 void	print_percent(void)
 {
-
+	ft_putnchar('%', 1);
 }
 
 void	print_shared(void)
