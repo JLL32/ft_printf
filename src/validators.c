@@ -12,7 +12,8 @@ bool is_width(void)
 
 bool is_precision(void)
 {
-	return (*g_str == '.' && ft_isdigit(*(++g_str)));
+	/* return (*g_str == '.' && ft_isdigit(*(++g_str))); */
+	return (*g_str == '.' && *++g_str);
 }
 
 bool is_length(void)

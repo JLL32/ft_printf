@@ -2,6 +2,9 @@
 
 void	print_integer(void)
 {
+	/**
+	 ** TODO: DECIMAL_WIDTH_ASTERISK 
+	 */
 	g_format.arg = va_arg(g_arg_list, void *);
 
 	int field_width = g_format.width -numlen((long)g_format.arg,
@@ -63,18 +66,23 @@ void	print_pointer(void)
  */
 void	print_string(void)
 {
+	/**
+	 ** TODO: STR_WIDTH_PRECISION
+	 */
+	int field_width;
+	size_t bytes;
 	g_format.arg = va_arg(g_arg_list, char *);
-	int field_width = g_format.width - ft_strlen(g_format.arg); 
-	size_t bytes = g_format.precision >= 0 ? g_format.precision 
-		: ft_strlen(g_format.arg);
-	if (field_width > 0) 
+	field_width = g_format.width - ft_strlen(g_format.arg);
+	bytes = g_format.precision >= 0 ? g_format.precision
+									: ft_strlen(g_format.arg);
+	if (field_width > 0)
 	{
-		if (g_format.flags.minus) 
+		if (g_format.flags.minus)
 		{
 			ft_putnstr(g_format.arg, bytes);
 			ft_putnchar(' ', field_width);
 		}
-		else 
+		else
 		{
 			ft_putnchar(' ', field_width);
 			ft_putnstr(g_format.arg, bytes);
@@ -86,7 +94,23 @@ void	print_string(void)
 
 void	print_char(void)
 {
-
+	g_format.arg = va_arg(g_arg_list, char *);
+	int field_width = g_format.width - 1;
+	if (field_width > 0)
+	{
+		if (g_format.flags.minus)
+		{
+			ft_putnchar(*(char *)g_format.arg, 1);
+			ft_putnchar(' ', field_width);
+		}
+		else
+		{
+			ft_putnchar(' ', field_width);
+			ft_putnchar(*(char *)g_format.arg, 1);
+		}
+	}
+	else
+		ft_putnchar(*(char *)g_format.arg, 1);
 }
 
 void	print_percent(void)

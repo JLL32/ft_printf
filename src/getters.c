@@ -64,7 +64,7 @@ void	get_width(void)
 
 /**
 ** NOTE: A negative precision means the precision is unspecified.
-** If only the period is pre the precision is set to zero.
+** If only the period is present the precision is set to zero.
 */
 void	get_precision(void)
 {
