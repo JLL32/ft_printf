@@ -58,9 +58,30 @@ void	print_pointer(void)
 
 }
 
+/**
+ ** NOTE: if the precision is bigger than -1 simply means it exists
+ */
 void	print_string(void)
 {
-
+	g_format.arg = va_arg(g_arg_list, char *);
+	int field_width = g_format.width - ft_strlen(g_format.arg); 
+	size_t bytes = g_format.precision >= 0 ? g_format.precision 
+		: ft_strlen(g_format.arg);
+	if (field_width > 0) 
+	{
+		if (g_format.flags.minus) 
+		{
+			ft_putnstr(g_format.arg, bytes);
+			ft_putnchar(' ', field_width);
+		}
+		else 
+		{
+			ft_putnchar(' ', field_width);
+			ft_putnstr(g_format.arg, bytes);
+		}
+	}
+	else
+		ft_putnstr(g_format.arg, bytes);
 }
 
 void	print_char(void)
