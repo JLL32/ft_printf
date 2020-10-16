@@ -28,5 +28,8 @@ int main()
    /* TEST(STR_PRECISION_MORE); */
    /* TEST(STR_PRECISION_NULL); */
    /* TEST(STR_PRECISION_ZERO); */
+
+  /* TEST(C_WIDTH_MORE); */
+  /* TEST(C_FLAG_MINUS); */
   return 0;
 }

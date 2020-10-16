@@ -75,6 +75,11 @@
 # define STR_PRECISION_ZERO "%.0s", "Hello"
 # define STR_WIDTH_PRECISION "%10.2s", "Hello"
 
+/**
+** Format specifier: %c
+*/
+# define C_WIDTH_MORE "%5c", 'H'
+# define C_FLAG_MINUS "%-5c", 'H'
 #endif // !TEST_H
 
 /*!
