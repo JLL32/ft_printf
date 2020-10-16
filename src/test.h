@@ -41,9 +41,9 @@
 
 # define DECIMAL_PRECISION					"El psy congroo! %.5d, %.10i", 5, 9
 
-# define DECIMAL_PRECISION_NULL "%.d", 10
+# define DECIMAL_PRECISION_NULL             "%5.d", 10
 
-# define DECIMAL_FLAG_ZERO_PRECISION			"El psy congroo! %0.5d, %0.10i", 5, 9
+# define DECIMAL_FLAG_ZERO_PRECISION		"El psy congroo! %0.5d, %0.10i", 5, 9
 
 # define DECIMAL_FLAG_ZERO_PRECISION_NULL	"El psy congroo! %0.0d, %0.0i", 5, 9
 
@@ -61,7 +61,7 @@
 
 # define HEXA_FLAG_HASH_PRECISION			"El psy %#.5X, %#.10x congroo!", 214, 1228
 
-# define HEXA_FLAG_MINUS_HASH_PRECISION			"El psy %-#.5x, %-#.10X congroo!", 255, 1228
+# define HEXA_FLAG_MINUS_HASH_PRECISION		"El psy %-#.5x, %-#.10X congroo!", 255, 1228
 
 /**
  ** Format specifier: %s
