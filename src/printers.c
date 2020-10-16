@@ -58,7 +58,7 @@ void	print_integer(void)
 
 void	print_pointer(void)
 {
-
+	
 }
 
 /**
@@ -94,23 +94,23 @@ void	print_string(void)
 
 void	print_char(void)
 {
-	g_format.arg = va_arg(g_arg_list, char *);
+	int arg = va_arg(g_arg_list, int);
 	int field_width = g_format.width - 1;
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus)
 		{
-			ft_putnchar(*(char *)g_format.arg, 1);
+			ft_putnchar(arg, 1);
 			ft_putnchar(' ', field_width);
 		}
 		else
 		{
 			ft_putnchar(' ', field_width);
-			ft_putnchar(*(char *)g_format.arg, 1);
+			ft_putnchar(arg, 1);
 		}
 	}
 	else
-		ft_putnchar(*(char *)g_format.arg, 1);
+		ft_putnchar(arg, 1);
 }
 
 void	print_percent(void)
