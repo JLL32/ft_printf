@@ -3,7 +3,7 @@
 void	print_integer(void)
 {
 	/**
-	 ** TODO: DECIMAL_WIDTH_ASTERISK 
+	 ** FIXMEJ: DECIMAL_WIDTH_ASTERISK
 	 */
 	g_format.arg = va_arg(g_arg_list, void *);
 
@@ -42,10 +42,10 @@ void	print_integer(void)
 		}
 		else
 		{
-			ft_putnchar((g_format.flags.zero != (g_format.precision == 0))
-				|| (g_format.precision > 0)
-				|| (g_format.specifier == 'X' || g_format.specifier == 'x')
-				? '0' : ' ', field_width);
+			ft_putnchar((g_format.flags.zero)
+						|| (g_format.precision > 0)
+						|| (g_format.specifier == 'X' || g_format.specifier == 'x')
+						? '0' : ' ', field_width);
 			cast_and_putnbr();
 		}
 	}
@@ -72,9 +72,9 @@ void	print_string(void)
 	int field_width;
 	size_t bytes;
 	g_format.arg = va_arg(g_arg_list, char *);
-	field_width = g_format.width - ft_strlen(g_format.arg);
 	bytes = g_format.precision >= 0 ? g_format.precision
 									: ft_strlen(g_format.arg);
+	field_width = g_format.width - bytes;
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus)
