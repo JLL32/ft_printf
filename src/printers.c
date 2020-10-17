@@ -58,7 +58,27 @@ void	print_integer(void)
 
 void	print_pointer(void)
 {
-	
+	size_t arg = (__int128)va_arg(g_arg_list, size_t);
+	size_t len = numlen(arg, 'd');
+	int field_width = g_format.width - len;
+
+	ft_putnstr("0x", 2);
+	if (field_width > 0)
+	{
+		if (g_format.flags.minus)
+		{
+			ft_putptr(arg);
+			ft_putnchar(' ', field_width);
+		}
+		else
+		{
+			ft_putnchar(' ', field_width);
+			ft_putptr(arg);
+		}
+	}
+	else
+		ft_putptr(arg);
+
 }
 
 /**
@@ -193,6 +213,39 @@ void ft_putnbr_base(long n, char base)
 		ft_putnchar(num[i], 1);
 }
 
+void ft_putptr(size_t ptr) {
+	size_t i;
+	size_t temp;
+	char num[100];
+
+	i = 0;
+	while (ptr)
+	{
+		temp = 0;
+		temp = ptr % 16;
+		if (temp < 10)
+			num[i++] = temp + '0';
+		else
+			num[i++] = temp + 55;
+		ptr = ptr / 16;
+	}
+	while(i--)
+		ft_putnchar(num[i], 1);
+}
+
+size_t ptrlen(size_t ptr)
+{
+	size_t count;
+
+	count = 0;
+	while (ptr)
+	{
+		count++;
+		ptr /= 16;
+	}
+	return (count);
+}
+
 size_t numlen(long num, char base)
 {
 	size_t count;
@@ -206,7 +259,7 @@ size_t numlen(long num, char base)
 	while (num)
 	{
 		count++;
-		num /= (base == 'X' || base == 'x' ? 16 : 10);
+		num /= (base == 'X' || base == 'x' || base == 'p' ? 16 : 10);
 	}
 	return (count);
 }

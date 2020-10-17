@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <ctype.h>
 # include "libft/libft.h"
 
 # define ABS(x) (((x) <  0) ? -(x) : (x))
@@ -51,7 +52,9 @@ void			ft_putnchar(char c, size_t n);
 void			ft_putnstr(char *str, size_t n);
 void			cast_and_putnbr();
 void			ft_putnbr_base(long n, char base);
+void			ft_putptr(size_t n);
 size_t			numlen(long num, char base);
+size_t          ptrlen(size_t ptr);
 /************************************************/
 
 typedef struct
