@@ -5,15 +5,15 @@ void	print_integer(void)
 	/**
 	 ** FIXMEJ: DECIMAL_WIDTH_ASTERISK
 	 */
-	g_format.arg = va_arg(g_arg_list, void *);
+	long arg = va_arg(g_arg_list, int);
 
-	int field_width = g_format.width -numlen((long)g_format.arg,
+	int field_width = g_format.width -numlen(arg,
 	g_format.specifier);
 	/**
 	 ** The precision support
 	*/
 	if(g_format.precision > (int)numlen(
-		(long)g_format.arg, g_format.specifier))
+		(long)arg, g_format.specifier))
 		field_width += g_format.precision - g_format.width;
 	/**
 	 ** The # flag support
@@ -25,19 +25,19 @@ void	print_integer(void)
 	 ** The + flag support
 	 */
 	if((g_format.specifier == 'd' || g_format.specifier == 'i')
-	&& g_format.flags.plus && (long)g_format.arg > 0)
+	&& g_format.flags.plus && arg > 0)
 		ft_putnchar('+', 1);
 	/**
 	 ** The space flag (The + flag overrides the space flag)
 	 */
 	else if((g_format.specifier == 'd' || g_format.specifier == 'i')
-	&& g_format.flags.space && (long)g_format.arg > 0)
+	&& g_format.flags.space && arg > 0)
 		ft_putnchar(' ', 1);
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus && g_format.precision < 1)
 		{
-			cast_and_putnbr();
+			cast_and_putnbr(arg);
 			ft_putnchar(' ', field_width);
 		}
 		else
@@ -46,11 +46,11 @@ void	print_integer(void)
 						|| (g_format.precision > 0)
 						|| (g_format.specifier == 'X' || g_format.specifier == 'x')
 						? '0' : ' ', field_width);
-			cast_and_putnbr();
+			cast_and_putnbr(arg);
 		}
 	}
 	else
-		cast_and_putnbr();
+		cast_and_putnbr(arg);
 	/**
 	** NOTE: Hexadecimals are unsigned int actually :)
 	*/
@@ -161,7 +161,7 @@ void	ft_putnstr(char *str, size_t n)
 	}
 }
 
-void	cast_and_putnbr()
+void	cast_and_putnbr(long arg)
 {
 	if (g_format.length)
 	{
@@ -177,7 +177,7 @@ void	cast_and_putnbr()
 	else
 	{
 		 if (g_format.specifier == 'd' || g_format.specifier == 'i')
-			ft_putnbr_base((int)g_format.arg, g_format.specifier);
+			ft_putnbr_base(arg, g_format.specifier);
 		else if (g_format.specifier == 'u' || g_format.specifier == 'x'
 		|| g_format.specifier == 'X')
 			ft_putnbr_base((unsigned int)g_format.arg, g_format.specifier);
