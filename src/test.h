@@ -80,6 +80,14 @@
 */
 # define C_WIDTH_MORE "%5c", 'H'
 # define C_FLAG_MINUS "%-5c", 'H'
+
+/**
+** Format specifier: %p
+*/
+int leet = 1337;
+void *ptr = &leet;
+# define P_WIDTH "%20p", ptr 
+# define P_FLAG_MINUS "%-20p", ptr 
 #endif // !TEST_H
 
 /*!
