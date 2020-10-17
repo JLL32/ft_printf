@@ -51,6 +51,15 @@
 
 # define DECIMAL_FLAG_MINUS_PRECISION		"El psy congroo! %-.5d, %-.10i", 5, 9
 
+# define DECIMAL_WIDTH                      "%8d|%8d", 123, -123 
+# define DECIMAL_MINUS                      "%-8d|%-8d", 123, -123 
+# define DECIMAL_PLUS                       "%+8d|%+8d", 123, -123
+# define DECIMAL_SPACE                      "% 8d|% 8d", 123, -123
+# define DECIMAL_ZERO                      "%08d|%08d", 123, -123
+# define DECIMAL_MINUS_PLUS                 "%-+8d|%-+8d", 123, -123
+# define DECIMAL_MINUS_SPACE                 "%- 8d|%- 8d", 123, -123
+# define DECIMAL_PLUS_ZERO                  "%+08d|%+08d", 123, -123
+# define DECIMAL_SPACE_ZERO                 "% 08d|% 08d", 123, -123 
 
 /**
  ** Format specifier: %x %X
@@ -88,7 +97,11 @@ int leet = 1337;
 void *ptr = &leet;
 # define P_WIDTH "%20p", ptr 
 # define P_FLAG_MINUS "%-20p", ptr 
+
+
 #endif // !TEST_H
+
+
 
 /*!
 ** TODO: t_printf ("%x",0)
