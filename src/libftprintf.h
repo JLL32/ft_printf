@@ -44,16 +44,19 @@ void			print_string(void);
 void			print_char(void);
 void			print_shared(void);
 void			print_percent(void);
+void            parse_signed(void);
+void            parse_unsigned(void);
 /**
  *  Not final functions
  *  Will be moved later to libft
 */
 void			ft_putnchar(char c, size_t n);
+void            ft_putsigned(long n, char prefix, size_t padding);
+void ft_putsize(size_t n, char base, char * prefix);
 void			ft_putnstr(char *str, size_t n);
 void			cast_and_putnbr();
-void			ft_putnbr_base(long n, char base);
 void			ft_putptr(size_t n);
-size_t			numlen(long num, char base);
+size_t			numlen(long num);
 size_t          ptrlen(size_t ptr);
 /************************************************/
 

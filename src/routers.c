@@ -34,7 +34,11 @@ void	router_specifier(void)
 	|| g_format.specifier == 'x'
 	|| g_format.specifier == 'X'
 	|| g_format.specifier == 'u')
-		print_integer();
+		parse_signed();
+	else if (g_format.specifier == 'u'
+		|| g_format.specifier == 'x'
+		|| g_format.specifier == 'X')
+		parse_unsigned();
 	else if (g_format.specifier == 'p')
 		print_pointer();
 	else if (g_format.specifier == 's')
