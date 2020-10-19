@@ -26,6 +26,9 @@ re: fclean all
 debug: $(SRC)
 	gcc -g main.c $(CFLAGS) $^ -L ./libft -lft -o main
 
+test: debug
+	./main
+
 # bonus: $(BSRC)
 # 	gcc $(CFLAGS) -c $^
 # 	ar rcs $(NAME) $(BOBJ)
