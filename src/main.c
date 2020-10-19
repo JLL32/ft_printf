@@ -41,8 +41,8 @@ TEST(DECIMAL_SPACE_ZERO);
   /* TEST(C_WIDTH_MORE); */
   /* TEST(C_FLAG_MINUS); */
 
-	TEST(P_FLAG_MINUS);
-	TEST(P_WIDTH);
+	// TEST(P_FLAG_MINUS);
+	// TEST(P_WIDTH);
 
   return 0;
 }
