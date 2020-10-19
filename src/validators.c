@@ -2,7 +2,7 @@
 
 bool is_flag(void)
 {
-	return (*g_str == '+' || *g_str == '-' || *g_str == '#' || *g_str == '0');
+	return (*g_str == '+' || *g_str == '-' || *g_str == '#' || *g_str == '0' || *g_str == ' ');
 }
 
 bool is_width(void)

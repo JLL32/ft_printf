@@ -10,10 +10,10 @@ void parse_signed(void)
 
 	if (ft_tolower(g_format.length) == 'l')
 		arg = va_arg(g_arg_list, long);
-	else 
+	else
 		arg = va_arg(g_arg_list, int);
 
-	field_width = g_format.width - numlen(arg) - (g_format.flags.space || g_format.flags.plus);
+	field_width = g_format.width - numlen(arg);
 
 	/**
 	 ** The precision support
@@ -21,10 +21,19 @@ void parse_signed(void)
 	if(g_format.precision > (int)numlen(arg))
 		field_width += g_format.precision - g_format.width;
 
-	if (g_format.flags.space)
-		prefix = ' ';
-	if (g_format.flags.plus)
-		prefix = '+';
+	prefix = '\0';
+	if (arg > 0)
+	{
+		if (g_format.flags.space)
+			prefix = ' ';
+		else if (g_format.flags.plus)
+			prefix = '+';
+		field_width -= (g_format.flags.space || g_format.flags.plus);
+	}
+	// if (g_format.flags.space)
+	// 	prefix = ' ';
+	// if (g_format.flags.plus)
+	// 	prefix = '+';
 	if (field_width > 0)
 		if (g_format.flags.minus && g_format.precision < 1)
 		{
@@ -51,7 +60,7 @@ void parse_unsigned(void)
 
 	if (ft_tolower(g_format.length) == 'l')
 		arg = va_arg(g_arg_list, long);
-	else 
+	else
 		arg = va_arg(g_arg_list, int);
 
 	int field_width = g_format.width - numlen(arg);
@@ -213,7 +222,7 @@ void	print_shared(void)
 
 void	ft_putnchar(char c, size_t n)
 {
-	while (n--)
+	while (c && n--)
 	{
 		g_counter++;
 		write(1, &c, 1);
