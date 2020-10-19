@@ -7,6 +7,7 @@ void parse_signed(void)
 	long arg;
 	char prefix;
 	int field_width;
+	size_t padding;
 
 	if (ft_tolower(g_format.length) == 'l')
 		arg = va_arg(g_arg_list, long);
@@ -19,7 +20,11 @@ void parse_signed(void)
 	 ** The precision support
 	*/
 	if(g_format.precision > (int)numlen(arg))
-		field_width += g_format.precision - g_format.width;
+	{
+		field_width = field_width - g_format.precision - numlen(arg);
+		padding = g_format.precision - numlen(arg) + (arg < 0);
+	}
+
 
 	prefix = '\0';
 	if (arg > 0)
@@ -30,27 +35,23 @@ void parse_signed(void)
 			prefix = '+';
 		field_width -= (g_format.flags.space || g_format.flags.plus);
 	}
-	// if (g_format.flags.space)
-	// 	prefix = ' ';
-	// if (g_format.flags.plus)
-	// 	prefix = '+';
 	if (field_width > 0)
 		if (g_format.flags.minus && g_format.precision < 1)
 		{
 			ft_putsigned(arg, prefix, 0);
 			ft_putnchar(' ', field_width);
 		}
-		else if (g_format.flags.zero || g_format.precision >= 0)
+		else if (g_format.flags.zero != (g_format.precision == 0))
 		{
 			ft_putsigned(arg, prefix, field_width);
 		}
 		else
 		{
 			ft_putnchar(' ', field_width);
-			ft_putsigned(arg, prefix, 0);
+			ft_putsigned(arg, prefix, padding);
 		}
 	else
-		ft_putsigned(arg, prefix, 0);
+		ft_putsigned(arg, prefix, padding);
 }
 
 void parse_unsigned(void)
@@ -77,25 +78,7 @@ void parse_unsigned(void)
 	/* if(g_format.flags.hash */
 	/* && (g_format.specifier == 'x' || g_format.specifier == 'X')) */
 	/* 	ft_putnstr(g_format.specifier == 'x' ? "0x" : "0X", 3); */
-
-	/**
-	 ** The space flag (The + flag overrides the space flag)
-	 */
-	if (g_format.flags.space)
-	{
-		field_width -= 1;
-		prefix = " ";
-	}
-
-	/**
-	 ** The + flag support
-	 */
-	if (g_format.flags.plus)
-	{
-		field_width -= 1;
-		prefix = "+";
-	}
-
+	prefix = "";
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus && g_format.precision < 1)
