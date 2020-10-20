@@ -51,13 +51,12 @@ void            parse_unsigned(void);
  *  Will be moved later to libft
 */
 void			ft_putnchar(char c, size_t n);
-void            ft_putsigned(long n, char prefix, size_t padding);
-void ft_putsize(size_t n, char base, char * prefix);
+void			ft_putsigned(long n, char prefix, size_t padding);
+void 			ft_putsize(size_t n, char base, char * prefix, size_t padding);
 void			ft_putnstr(char *str, size_t n);
-void			cast_and_putnbr();
-void			ft_putptr(size_t n);
+void			ft_putunsigned(size_t n);
 size_t			numlen(long num);
-size_t          ptrlen(size_t ptr);
+size_t			ptrlen(size_t ptr);
 /************************************************/
 
 typedef struct

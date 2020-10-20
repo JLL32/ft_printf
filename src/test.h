@@ -61,7 +61,9 @@
 # define DECIMAL_PLUS_ZERO                  "%+08d|%+08d", 123, -123
 # define DECIMAL_SPACE_ZERO                 "% 08d|% 08d", 123, -123
 # define DECIMAL_PRECISION                  "%.8d|%.8d", 123, -123
-# define DECIMAL_WIDTH_PRECISION			"%4.0d|%4.0d", 123, -123
+# define DECIMAL_WIDTH_PRECISION_ZERO		"%4.d|%4.d", 123, -123
+# define DECIMAL_MINUS_PRECISION			"%-4.8d|%-4.8d", 123, -123
+
 
 /**
  ** Format specifier: %x %X
