@@ -9,23 +9,20 @@ void parse_signed(void)
 	int field_width;
 	size_t padding;
 
+// set prefix
+// set arg
+// set field_width
+// set padding
 	if (ft_tolower(g_format.length) == 'l')
 		arg = va_arg(g_arg_list, long);
 	else
 		arg = va_arg(g_arg_list, int);
-
 	field_width = g_format.width - numlen(arg);
-
-	/**
-	 ** The precision support
-	*/
 	if(g_format.precision > (int)numlen(arg))
 	{
 		field_width = field_width - g_format.precision - numlen(arg);
 		padding = g_format.precision - numlen(arg) + (arg < 0);
 	}
-
-
 	prefix = '\0';
 	if (arg > 0)
 	{
@@ -41,7 +38,7 @@ void parse_signed(void)
 			ft_putsigned(arg, prefix, 0);
 			ft_putnchar(' ', field_width);
 		}
-		else if (g_format.flags.zero != (g_format.precision == 0))
+		else if (g_format.flags.zero && (g_format.precision > 0))
 		{
 			ft_putsigned(arg, prefix, field_width);
 		}
@@ -58,27 +55,38 @@ void parse_unsigned(void)
 {
 	long arg;
 	char *prefix;
+	int field_width;
+	size_t padding;
 
 	if (ft_tolower(g_format.length) == 'l')
-		arg = va_arg(g_arg_list, long);
+		arg = va_arg(g_arg_list, unsigned long);
 	else
-		arg = va_arg(g_arg_list, int);
+		arg = va_arg(g_arg_list,unsigned int);
 
-	int field_width = g_format.width - numlen(arg);
+	field_width = g_format.width - unsigned_len(arg);
 	/**
 	 ** The precision support
 	*/
-	if(g_format.precision > (int)numlen(
-		(long)arg))
-		field_width += g_format.precision - g_format.width;
+	// if(g_format.precision > (int)numlen(
+	// 	(long)arg))
+	// 	field_width += g_format.precision - g_format.width;
+	if(g_format.precision > (int)unsigned_len(arg))
+	{
+		field_width = field_width - g_format.precision - numlen(arg);
+		padding = g_format.precision - numlen(arg) + (arg < 0);
+	}
 
 	/**
 	 ** The # flag support
 	*/
-	/* if(g_format.flags.hash */
-	/* && (g_format.specifier == 'x' || g_format.specifier == 'X')) */
-	/* 	ft_putnstr(g_format.specifier == 'x' ? "0x" : "0X", 3); */
 	prefix = "";
+	if(g_format.flags.hash &&
+	 (g_format.specifier == 'x' || g_format.specifier == 'X')
+	 && arg > 0)
+	{
+		prefix = (g_format.specifier == 'x' ? "0x" : "0X", 3);
+		field_width -= 2;
+	}
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus && g_format.precision < 1)
@@ -86,14 +94,16 @@ void parse_unsigned(void)
 			/* cast_and_putnbr(arg); */
 			ft_putnchar(' ', field_width);
 		}
+		else if (g_format.flags.zero && g_format.precision > 0 || tf_tolower(g_format.specifier) == 'x')
+		{
+			ft_putsize(arg, g_format.specifier, prefix, field_width);
+		}
 		else
 		{
-			ft_putnchar((g_format.flags.zero)
-						|| (g_format.precision > 0)
-						|| (g_format.specifier == 'X' || g_format.specifier == 'x')
-						? '0' : ' ', field_width);
-			/* cast_and_putnbr(arg); */
+			ft_putnchar(' ', field_width);
+			ft_putsize(arg, g_format.specifier, prefix, padding);
 		}
+
 	}
 	else
 	{
@@ -107,22 +117,22 @@ void	print_pointer(void)
 	size_t len = numlen(arg);
 	int field_width = g_format.width - len;
 
-	ft_putnstr("0x", 2);
+	ft_putnstr("0x", 2); // field_width - 2 ?
 	if (field_width > 0)
 	{
 		if (g_format.flags.minus)
 		{
-			ft_putptr(arg);
+			ft_putunsigned(arg);
 			ft_putnchar(' ', field_width);
 		}
 		else
 		{
 			ft_putnchar(' ', field_width);
-			ft_putptr(arg);
+			ft_putunsigned(arg);
 		}
 	}
 	else
-		ft_putptr(arg);
+		ft_putunsigned(arg);
 }
 
 /**
@@ -168,7 +178,7 @@ void	print_char(void)
 			ft_putnchar(' ', field_width);
 		}
 		else
-		{
+	{
 			ft_putnchar(' ', field_width);
 			ft_putnchar(arg, 1);
 		}
@@ -221,33 +231,6 @@ void	ft_putnstr(char *str, size_t n)
 	}
 }
 
-/* void	cast_and_putnbr(long arg) */
-/* { */
-/* 	if (g_format.length) */
-/* 	{ */
-/* 		if (g_format.length == 'l') */
-/* 			ft_putnbr_base((long)g_format.arg, g_format.specifier); */
-/* 		else if(g_format.length == 'h' */
-/* 		|| g_format.specifier == 'd' */
-/* 		|| g_format.specifier == 'i') */
-/* 			ft_putnbr_base((short)g_format.arg, g_format.specifier); */
-/* 		else if(g_format.length == 'h' || g_format.specifier == 'u') */
-/* 			ft_putnbr_base((unsigned short)g_format.arg, g_format.specifier); */
-/* 	} */
-/* 	else */
-/* 	{ */
-/* 		 if (g_format.specifier == 'd' || g_format.specifier == 'i') */
-/* 			ft_putnbr_base(arg, g_format.specifier); */
-/* 		else if (g_format.specifier == 'u' || g_format.specifier == 'x' */
-/* 		|| g_format.specifier == 'X') */
-/* 			ft_putnbr_base((unsigned int)g_format.arg, g_format.specifier); */
-/* 	} */
-/* } */
-
-/**
- ** NOTE: An integer overflow will occur when passing unsigned long
-*/
-
 void ft_putsigned(long n, char prefix, size_t padding)
 {
 	size_t i;
@@ -276,17 +259,12 @@ void ft_putsigned(long n, char prefix, size_t padding)
 		ft_putnchar(num[i], 1);
 }
 
-void ft_putsize(size_t n, char base, char * prefix)
+void ft_putsize(size_t n, char base, char * prefix, size_t padding)
 {
 	size_t i;
 	size_t temp;
 	char num[100];
 
-	if (n < 0)
-	{
-		ft_putnchar('-' , 1);
-		n = ABS(n);
-	}
 	i = 0;
 	while (*prefix)
 	{
@@ -303,11 +281,12 @@ void ft_putsize(size_t n, char base, char * prefix)
 			num[i++] = temp + (base == 'x' ? 87 : 55);
 		n = n / ((base == 'x' || base == 'X') ? 16 : 10);
 	}
+	i = 0;
 	while (i--)
 		ft_putnchar(num[i], 1);
 }
 
-void ft_putptr(size_t ptr) {
+void ft_putunsigned(size_t ptr) {
 	size_t i;
 	size_t temp;
 	char num[100];
@@ -327,7 +306,7 @@ void ft_putptr(size_t ptr) {
 		ft_putnchar(num[i], 1);
 }
 
-size_t ptrlen(size_t ptr)
+size_t unsigned_len(size_t ptr)
 {
 	size_t count;
 
