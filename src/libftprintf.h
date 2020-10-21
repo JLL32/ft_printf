@@ -38,14 +38,12 @@ void			get_precision(void);
 void			get_length(void);
 void			get_specifier(void);
 
-void			print_integer(void);
-void			print_pointer(void);
-void			print_string(void);
-void			print_char(void);
-void			print_shared(void);
-void			print_percent(void);
-void            parse_signed(void);
-void            parse_unsigned(void);
+void			parse_ptr(void);
+void			parse_str(void);
+void			parse_char(void);
+void			parse_percent(void);
+void			parse_signed(void);
+void			parse_unsigned(void);
 /**
  *  Not final functions
  *  Will be moved later to libft
@@ -57,6 +55,7 @@ void			ft_putnstr(char *str, size_t n);
 void			ft_putunsigned(size_t n);
 size_t			numlen(long num);
 size_t			ptrlen(size_t ptr);
+size_t			unsigned_len(size_t ptr);
 /************************************************/
 
 typedef struct
@@ -74,10 +73,10 @@ typedef struct
 	char	length;
 	char	specifier;
 	void	*arg;
-}				t_format;
+}				t_form;
 
 va_list			g_arg_list;
 int				g_counter;
 char			*g_str;
-t_format		g_format;
+t_form		g_form;
 #endif

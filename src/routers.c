@@ -29,23 +29,23 @@ void	router_lvl(int lvl)
 
 void	router_specifier(void)
 {
-	if (g_format.specifier == 'd'
-	|| g_format.specifier == 'i'
-	|| g_format.specifier == 'x'
-	|| g_format.specifier == 'X'
-	|| g_format.specifier == 'u')
+	if (g_form.specifier == 'd'
+	|| g_form.specifier == 'i'
+	|| g_form.specifier == 'x'
+	|| g_form.specifier == 'X'
+	|| g_form.specifier == 'u')
 		parse_signed();
-	else if (g_format.specifier == 'u'
-		|| g_format.specifier == 'x'
-		|| g_format.specifier == 'X')
+	else if (g_form.specifier == 'u'
+		|| g_form.specifier == 'x'
+		|| g_form.specifier == 'X')
 		parse_unsigned();
-	else if (g_format.specifier == 'p')
-		print_pointer();
-	else if (g_format.specifier == 's')
-		print_string();
-	else if (g_format.specifier == 'c')
-		print_char();
-	else if (g_format.specifier == '%')
-		print_percent();
+	else if (g_form.specifier == 'p')
+		parse_ptr();
+	else if (g_form.specifier == 's')
+		parse_str();
+	else if (g_form.specifier == 'c')
+		parse_char();
+	else if (g_form.specifier == '%')
+		parse_percent();
 	return;
 }
