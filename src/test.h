@@ -77,6 +77,19 @@
 # define HEXA_FLAG_MINUS_HASH_PRECISION		"El psy %-#.5x, %-#.10X congroo!", 255, 1228
 
 /**
+ ** Format specifier: %u
+*/
+# define U_WIDTH                      "%8u", 123
+# define U_MINUS                      "%-8u", 123
+# define U_SPACE                      "% 8u", 123
+# define U_ZERO                      "%08u", 123
+# define U_MINUS_SPACE                 "%- 8u", 123
+# define U_SPACE_ZERO                 "% 08u", 123
+# define U_PRECISION                  "%.8u", 123
+# define U_WIDTH_PRECISION_ZERO		"%4.u", 123
+# define U_MINUS_PRECISION			"%-4.8u", 123
+
+/**
  ** Format specifier: %s
  */
 # define STR_WIDTH_LESS "%4s", "Hello"
