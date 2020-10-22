@@ -8,11 +8,12 @@ void parse_signed(void)
 	char prefix;
 	int field_width;
 	size_t padding;
+	padding = 0;
 
-// set prefix
-// set arg
-// set field_width
-// set padding
+	// set prefix
+	// set arg
+	// set field_width
+	// set padding
 	if (ft_tolower(g_form.length) == 'l')
 		arg = va_arg(g_arg_list, long);
 	else
@@ -38,7 +39,7 @@ void parse_signed(void)
 			ft_putsigned(arg, prefix, 0);
 			ft_putnchar(' ', field_width);
 		}
-		else if (g_form.flags.zero && (g_form.precision > 0))
+		else if (g_form.flags.zero || (g_form.precision > 0))
 		{
 			ft_putsigned(arg, prefix, field_width);
 		}
@@ -53,36 +54,38 @@ void parse_signed(void)
 
 void parse_unsigned(void)
 {
-	long arg;
+	size_t arg;
 	char *prefix;
 	int field_width;
 	size_t padding;
+	size_t len;
+	padding = 0;
 
 	if (ft_tolower(g_form.length) == 'l')
 		arg = va_arg(g_arg_list, unsigned long);
 	else
 		arg = va_arg(g_arg_list,unsigned int);
 
-	field_width = g_form.width - unsigned_len(arg);
+	len = unsigned_len(arg, g_form.specifier);
+	field_width = g_form.width - len;
 	/**
 	 ** The precision support
 	*/
 	// if(g_format.precision > (int)numlen(
 	// 	(long)arg))
 	// 	field_width += g_format.precision - g_format.width;
-	if(g_form.precision > (int)unsigned_len(arg))
+	if(g_form.precision > (int)len)
 	{
-		field_width = field_width - g_form.precision - numlen(arg);
-		padding = g_form.precision - numlen(arg) + (arg < 0);
+		field_width = field_width - g_form.precision - len;
+		padding = g_form.precision - len + (arg < 0);
 	}
 
 	/**
 	 ** The # flag support
 	*/
 	prefix = "";
-	if(g_form.flags.hash &&
-	 (g_form.specifier == 'x' || g_form.specifier == 'X')
-	 && arg > 0)
+	if(g_form.flags.hash && (g_form.specifier == 'x' || g_form.specifier == 'X')
+	&& arg > 0)
 	{
 		prefix = g_form.specifier == 'x' ? "0x" : "0X";
 		field_width -= 2;
@@ -91,10 +94,12 @@ void parse_unsigned(void)
 	{
 		if (g_form.flags.minus && g_form.precision < 1)
 		{
-			/* cast_and_putnbr(arg); */
+			ft_putsize(arg, g_form.specifier, prefix, 0);
 			ft_putnchar(' ', field_width);
 		}
-		else if ((g_form.flags.zero && g_form.precision > 0) || ft_tolower(g_form.specifier) == 'x')
+		else if (g_form.flags.zero
+				|| (g_form.precision > 0)
+				|| ft_tolower(g_form.specifier) == 'x')
 		{
 			ft_putsize(arg, g_form.specifier, prefix, field_width);
 		}
@@ -257,12 +262,7 @@ void ft_putsize(size_t n, char base, char * prefix, size_t padding)
 	size_t temp;
 	char num[100];
 
-	i = 0;
-	while (*prefix)
-	{
-		num[i] = *prefix;
-		prefix++;
-	}
+	ft_putnstr(prefix, 2);
 	ft_putnchar('0', padding);
 	i = 0;
 	while (n)
@@ -275,7 +275,6 @@ void ft_putsize(size_t n, char base, char * prefix, size_t padding)
 			num[i++] = temp + (base == 'x' ? 87 : 55);
 		n = n / ((base == 'x' || base == 'X') ? 16 : 10);
 	}
-	i = 0;
 	while (i--)
 		ft_putnchar(num[i], 1);
 }
@@ -300,7 +299,7 @@ void ft_putunsigned(size_t ptr) {
 		ft_putnchar(num[i], 1);
 }
 
-size_t unsigned_len(size_t ptr)
+size_t unsigned_len(size_t ptr, char base)
 {
 	size_t count;
 
@@ -308,7 +307,7 @@ size_t unsigned_len(size_t ptr)
 	while (ptr)
 	{
 		count++;
-		ptr /= 16;
+		ptr /= ft_tolower(base) == 'x' ? 16 : 10;
 	}
 	return (count);
 }

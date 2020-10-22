@@ -30,10 +30,7 @@ void	router_lvl(int lvl)
 void	router_specifier(void)
 {
 	if (g_form.specifier == 'd'
-	|| g_form.specifier == 'i'
-	|| g_form.specifier == 'x'
-	|| g_form.specifier == 'X'
-	|| g_form.specifier == 'u')
+	|| g_form.specifier == 'i')
 		parse_signed();
 	else if (g_form.specifier == 'u'
 		|| g_form.specifier == 'x'

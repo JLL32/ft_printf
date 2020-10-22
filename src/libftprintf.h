@@ -55,7 +55,7 @@ void			ft_putnstr(char *str, size_t n);
 void			ft_putunsigned(size_t n);
 size_t			numlen(long num);
 size_t			ptrlen(size_t ptr);
-size_t			unsigned_len(size_t ptr);
+size_t			unsigned_len(size_t ptr, char base);
 /************************************************/
 
 typedef struct
