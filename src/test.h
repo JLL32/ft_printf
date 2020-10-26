@@ -119,6 +119,7 @@ void *ptr = &leet;
 # define TEST_2 "Bla bla %c", 0
 # define TEST_3 "Bla bla %s", 0
 # define TEST_4 "Bla bla %%"
+# define TEST_5 "Bla bla %.d", 0
 
 #endif // !TEST_H
 
