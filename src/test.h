@@ -115,6 +115,10 @@ void *ptr = &leet;
 # define P_WIDTH							"%20p", ptr
 # define P_FLAG_MINUS						"%-20p", ptr
 
+# define TEST_1 "Bla bla %d", 0
+# define TEST_2 "Bla bla %c", 0
+# define TEST_3 "Bla bla %s", 0
+# define TEST_4 "Bla bla %%"
 
 #endif // !TEST_H
 
