@@ -244,7 +244,8 @@ void ft_putsigned(long n, char prefix, size_t padding)
 	ft_putnchar('0', padding);
 	if (n == 0)
 	{
-		ft_putnchar('0', 1);
+		if (g_form.precision != 0)
+			ft_putnchar('0', 1);
 		return;
 	}
 	i = 0;
@@ -272,7 +273,8 @@ void ft_putsize(size_t n, char base, char * prefix, size_t padding)
 	ft_putnchar('0', padding);
 	if (n == 0)
 	{
-		ft_putnchar('0', 1);
+		if (g_form.precision != 0)
+			ft_putnchar('0', 1);
 		return ;
 	}
 	i = 0;
@@ -297,7 +299,8 @@ void ft_putunsigned(size_t ptr) {
 
 	if (ptr == 0)
 	{
-		ft_putnchar('0', 1);
+		if (g_form.precision != 0)
+			ft_putnchar('0', 1);
 		return ;
 	}
 	i = 0;
