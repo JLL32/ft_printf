@@ -24,5 +24,5 @@ bool is_length(void)
 bool is_specifier(void)
 {
 	return (*g_str == 'd' || *g_str == 'i' || *g_str == 'u' || *g_str == 'x'
-	|| *g_str == 'X' || *g_str == 'p' || *g_str == 'c' || *g_str == 's');
+	|| *g_str == 'X' || *g_str == 'p' || *g_str == 'c' || *g_str == 's' || *g_str == '%');
 }
