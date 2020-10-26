@@ -12,13 +12,10 @@ int	ft_tolower(int c)
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	const char *str;
 
-	i = 0;
-	while (*s != '\0')
-	{
-		s++;
-		i++;
-	}
-	return (i);
+	str = s;
+	while (*str)
+		str++;
+	return (str - s);
 }
