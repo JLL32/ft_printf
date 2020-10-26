@@ -123,48 +123,55 @@ void	parse_ptr(void)
 	{
 		if (g_form.flags.minus)
 		{
-			ft_putunsigned(arg);
+			ft_putsize(arg, 'x', "", 0);
 			ft_putnchar(' ', field_width);
 		}
 		else
 		{
 			ft_putnchar(' ', field_width);
-			ft_putunsigned(arg);
+			ft_putsize(arg, 'x', "", 0);
 		}
 	}
 	else
-		ft_putunsigned(arg);
+		ft_putsize(arg, 'x', "", 0);
 }
 
 void	parse_str(void)
 {
 	int field_width;
 	size_t bytes;
-	g_form.arg = va_arg(g_arg_list, char *);
+	char *arg;
+	if ((arg = va_arg(g_arg_list, char *)) == NULL)
+		return ;
 	bytes = g_form.precision >= 0 ? g_form.precision
-									: ft_strlen(g_form.arg);
+								  : ft_strlen(arg);
 	field_width = g_form.width - bytes;
 	if (field_width > 0)
 	{
 		if (g_form.flags.minus)
 		{
-			ft_putnstr(g_form.arg, bytes);
+			ft_putnstr(arg, bytes);
 			ft_putnchar(' ', field_width);
 		}
 		else
 		{
 			ft_putnchar(' ', field_width);
-			ft_putnstr(g_form.arg, bytes);
+			ft_putnstr(arg, bytes);
 		}
 	}
 	else
-		ft_putnstr(g_form.arg, bytes);
+		ft_putnstr(arg, bytes);
 }
 
 void	parse_char(void)
 {
 	int arg = va_arg(g_arg_list, int);
 	int field_width = g_form.width - 1;
+	if (arg == 0) {
+		write(1, &arg, 1);
+		g_counter++;
+		return ;
+	}
 	if (field_width > 0)
 	{
 		if (g_form.flags.minus)
@@ -203,10 +210,6 @@ void	parse_percent(void)
 		ft_putnchar(arg, 1);
 }
 
-void	print_shared(void)
-{
-
-}
 
 void	ft_putnchar(char c, size_t n)
 {
@@ -239,6 +242,11 @@ void ft_putsigned(long n, char prefix, size_t padding)
 	}
 	ft_putnchar(prefix, 1);
 	ft_putnchar('0', padding);
+	if (n == 0)
+	{
+		ft_putnchar('0', 1);
+		return;
+	}
 	i = 0;
 	while (n)
 	{
@@ -262,6 +270,11 @@ void ft_putsize(size_t n, char base, char * prefix, size_t padding)
 
 	ft_putnstr(prefix, 2);
 	ft_putnchar('0', padding);
+	if (n == 0)
+	{
+		ft_putnchar('0', 1);
+		return ;
+	}
 	i = 0;
 	while (n)
 	{
@@ -282,6 +295,11 @@ void ft_putunsigned(size_t ptr) {
 	size_t temp;
 	char num[100];
 
+	if (ptr == 0)
+	{
+		ft_putnchar('0', 1);
+		return ;
+	}
 	i = 0;
 	while (ptr)
 	{
@@ -302,6 +320,8 @@ size_t unsigned_len(size_t ptr, char base)
 	size_t count;
 
 	count = 0;
+	if (ptr == 0)
+		count++;
 	while (ptr)
 	{
 		count++;
@@ -320,6 +340,8 @@ size_t numlen(long num)
 		count += 1;
 		num = ABS(num);
 	}
+	if (num == 0)
+		count++;
 	while (num)
 	{
 		count++;
