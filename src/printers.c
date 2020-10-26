@@ -1,6 +1,4 @@
-#include "libft/libft.h"
 #include "libftprintf.h"
-#include <stdarg.h>
 
 void parse_signed(void)
 {
@@ -328,4 +326,18 @@ size_t numlen(long num)
 		num /= 10;
 	}
 	return (count);
+}
+
+void parse_n(void)
+{
+	// long *arg;
+
+	// if (g_form.length == 'l')
+	// 	arg = va_arg(g_arg_list, long *);
+	// else if (g_form.length == 'h')
+	// 	arg = va_arg(g_arg_list, short *);
+	// else
+	// 	arg = va_arg(g_arg_list, int *);
+	// *arg = g_counter;
+	return;
 }

@@ -1,6 +1,4 @@
 #include "libftprintf.h"
-#include "libft/libft.h"
-#include <stdio.h>
 
 void	get_flag(void)
 {

@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <ctype.h>
-# include "libft/libft.h"
+# include "utils.h"
 
 # define ABS(x) (((x) <  0) ? -(x) : (x))
 
@@ -44,6 +44,7 @@ void			parse_char(void);
 void			parse_percent(void);
 void			parse_signed(void);
 void			parse_unsigned(void);
+void parse_n(void);
 /**
  *  Not final functions
  *  Will be moved later to libft

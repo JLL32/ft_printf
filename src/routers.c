@@ -44,5 +44,7 @@ void	router_specifier(void)
 		parse_char();
 	else if (g_form.specifier == '%')
 		parse_percent();
+	else if (g_form.specifier == 'n')
+		parse_n();
 	return;
 }
