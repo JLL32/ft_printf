@@ -60,7 +60,14 @@ int main() {
 // TEST(TEST_2);
 // TEST(TEST_3); // ERROR
 // TEST(TEST_4);
-TEST(TEST_5);
+// TEST(TEST_5);
+// TEST(TEST_6);
+// TEST(TEST_7);
+// TEST(TEST_8);
+// TEST(TEST_9);
+// TEST(TEST_10);
+// TEST(TEST_11);
+TEST(TEST_12);
 
 return 0;
 }
