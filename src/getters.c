@@ -82,7 +82,7 @@ void	get_precision(void)
 		}
 	}
 	if (g_form.precision == 0 && g_form.flags.zero == true)
-		g_form.precision = false;
+		g_form.flags.zero = false;
 	router_lvl(4);
 	return ;
 }

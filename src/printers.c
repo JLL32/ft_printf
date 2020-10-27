@@ -16,10 +16,10 @@ void parse_signed(void)
 		arg = va_arg(g_arg_list, long);
 	else
 		arg = va_arg(g_arg_list, int);
-	field_width = g_form.width - numlen(arg);
+	field_width = g_form.width - numlen(arg) + (!g_form.precision && !arg ? 1 : 0);
 	if(g_form.precision > (int)numlen(arg))
 	{
-		field_width = field_width - g_form.precision - numlen(arg);
+		field_width = field_width - (g_form.precision - numlen(arg));
 		padding = g_form.precision - numlen(arg) + (arg < 0);
 	}
 	prefix = '\0';
@@ -37,7 +37,7 @@ void parse_signed(void)
 			ft_putsigned(arg, prefix, 0);
 			ft_putnchar(' ', field_width);
 		}
-		else if (g_form.flags.zero || (g_form.precision > 0))
+		else if (g_form.flags.zero)
 		{
 			ft_putsigned(arg, prefix, field_width);
 		}
@@ -95,9 +95,8 @@ void parse_unsigned(void)
 			ft_putsize(arg, g_form.specifier, prefix, 0);
 			ft_putnchar(' ', field_width);
 		}
-		else if (g_form.flags.zero
-				|| (g_form.precision > 0)
-				|| ft_tolower(g_form.specifier) == 'x')
+		else if ((g_form.flags.zero
+				|| (g_form.precision > 0)) && arg > 0)
 		{
 			ft_putsize(arg, g_form.specifier, prefix, field_width);
 		}
@@ -115,25 +114,25 @@ void parse_unsigned(void)
 void	parse_ptr(void)
 {
 	size_t arg = va_arg(g_arg_list, size_t);
-	size_t len = numlen(arg);
-	int field_width = g_form.width - len;
+	size_t len = unsigned_len(arg, 'x');
+	int field_width = g_form.width - len - 2;
 
-	ft_putnstr("0x", 2); // field_width - 2 ?
+	// ft_putnstr("0x", 2); // field_width - 2 ?
 	if (field_width > 0)
 	{
 		if (g_form.flags.minus)
 		{
-			ft_putsize(arg, 'x', "", 0);
+			ft_putsize(arg, 'x', "0x", 0);
 			ft_putnchar(' ', field_width);
 		}
 		else
 		{
 			ft_putnchar(' ', field_width);
-			ft_putsize(arg, 'x', "", 0);
+			ft_putsize(arg, 'x', "0x", 0);
 		}
 	}
 	else
-		ft_putsize(arg, 'x', "", 0);
+		ft_putsize(arg, 'x', "0x", 0);
 }
 
 void	parse_str(void)
@@ -142,7 +141,9 @@ void	parse_str(void)
 	size_t bytes;
 	char *arg;
 	if ((arg = va_arg(g_arg_list, char *)) == NULL)
-		return ;
+	{
+		arg = "(null)";
+	}
 	bytes = g_form.precision >= 0 ? g_form.precision
 								  : ft_strlen(arg);
 	field_width = g_form.width - bytes;
@@ -167,11 +168,6 @@ void	parse_char(void)
 {
 	int arg = va_arg(g_arg_list, int);
 	int field_width = g_form.width - 1;
-	if (arg == 0) {
-		write(1, &arg, 1);
-		g_counter++;
-		return ;
-	}
 	if (field_width > 0)
 	{
 		if (g_form.flags.minus)
@@ -213,6 +209,11 @@ void	parse_percent(void)
 
 void	ft_putnchar(char c, size_t n)
 {
+	if (g_form.specifier == 'c' && c == 0)
+	{
+		g_counter++;
+		write(1, &c, 1);
+	}
 	while (c && n--)
 	{
 		g_counter++;
