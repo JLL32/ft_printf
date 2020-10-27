@@ -127,6 +127,12 @@ void *ptr = &leet;
 # define TEST_10 "Bla bla %*p", 10, (void*)-1
 # define TEST_11 "Bla bla %*.d", 3, 0
 # define TEST_12 "Bla bla %*.3d", 10, 0
+# define TEST_13 "Bla bla %*.3d", -15, 0
+# define TEST_14 "Bla bla %*.10d", -15, -123
+# define TEST_15 "Bla bla %*.3s", 10, ""
+# define TEST_16 "Bla bla %03u", 0
+# define TEST_17 "Bla bla %*.u", 3, 0
+# define TEST_18 "Bla bla %*.3u", 10, 0
 
 #endif // !TEST_H
 

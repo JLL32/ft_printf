@@ -67,7 +67,13 @@ int main() {
 // TEST(TEST_9);
 // TEST(TEST_10);
 // TEST(TEST_11);
-TEST(TEST_12);
+// TEST(TEST_12);
+// TEST(TEST_13);
+// TEST(TEST_14);
+// TEST(TEST_15);
+// TEST(TEST_16);
+TEST(TEST_17);
+TEST(TEST_18);
 
 return 0;
 }
