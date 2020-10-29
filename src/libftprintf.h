@@ -6,7 +6,7 @@
 /*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 10:46:25 by ael-hach          #+#    #+#             */
-/*   Updated: 2020/10/29 18:12:50 by jll32            ###   ########.fr       */
+/*   Updated: 2020/10/29 18:29:55 by jll32            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void			router_specifier(void);
 bool			is_flag(void);
 bool			is_width(void);
 bool			is_precision(void);
-bool			is_length(void);
 bool			is_specifier(void);
 void			get_flag(void);
 void			get_width(void);
 void			get_precision(void);
-void			get_length(void);
 void			get_specifier(void);
 void			parse_signed(long arg
 , int field_width

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routers.c                                          :+:      :+:    :+:   */
+/*   route.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:33:42 by ael-hach          #+#    #+#             */
-/*   Updated: 2020/10/29 17:25:22 by jll32            ###   ########.fr       */
+/*   Updated: 2020/10/29 18:29:05 by jll32            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	router_lvl(int lvl)
 		get_width();
 	else if (is_precision() && lvl <= 3)
 		get_precision();
-	else if (is_length() && lvl <= 4)
-		get_length();
-	else if (is_specifier() && lvl <= 5)
+	else if (is_specifier() && lvl <= 4)
 		get_specifier();
 	return ;
 }

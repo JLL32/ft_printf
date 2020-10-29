@@ -6,7 +6,7 @@
 /*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 01:04:23 by jll32             #+#    #+#             */
-/*   Updated: 2020/10/29 18:06:44 by jll32            ###   ########.fr       */
+/*   Updated: 2020/10/29 18:29:32 by jll32            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,6 @@ void	get_precision(void)
 	if (g_form.precision == 0 && g_form.flags.zero == true)
 		g_form.flags.zero = false;
 	router_lvl(4);
-	return ;
-}
-
-void	get_length(void)
-{
-	g_form.length = *g_str;
-	g_str++;
-	router_lvl(5);
 	return ;
 }
 
