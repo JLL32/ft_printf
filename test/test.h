@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/28 01:05:20 by jll32             #+#    #+#             */
+/*   Updated: 2020/10/29 17:40:46 by jll32            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TEST_H
 # define TEST_H
 # include <stdio.h>
@@ -6,7 +18,7 @@
 # include <stdbool.h>
 # include <string.h>
 # include <unistd.h>
-# include "libftprintf.h"
+# include "../src/libftprintf.h"
 
 # define BLUE "\x1b[34m"
 # define GREEN "\x1b[32m"

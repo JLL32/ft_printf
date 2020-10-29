@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   router.c                                           :+:      :+:    :+:   */
+/*   routers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-hach <ael-hach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:33:42 by ael-hach          #+#    #+#             */
-/*   Updated: 2020/02/17 16:02:32 by ael-hach         ###   ########.fr       */
+/*   Updated: 2020/10/29 17:25:22 by jll32            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	router_lvl(int lvl)
 {
 	if (is_flag() && lvl <= 1)
 		get_flag();
-	else if(is_width() && lvl <= 2)
+	else if (is_width() && lvl <= 2)
 		get_width();
 	else if (is_precision() && lvl <= 3)
 		get_precision();
@@ -24,27 +24,24 @@ void	router_lvl(int lvl)
 		get_length();
 	else if (is_specifier() && lvl <= 5)
 		get_specifier();
-	return;
+	return ;
 }
 
 void	router_specifier(void)
 {
-	if (g_form.specifier == 'd'
-	|| g_form.specifier == 'i')
-		parse_signed();
+	if (g_form.specifier == 'd' || g_form.specifier == 'i')
+		parse_signed(va_arg(g_arg_list, int), 0, 0, 0);
 	else if (g_form.specifier == 'u'
-		|| g_form.specifier == 'x'
-		|| g_form.specifier == 'X')
-		parse_unsigned();
+			|| g_form.specifier == 'x'
+			|| g_form.specifier == 'X')
+		parse_signed(va_arg(g_arg_list, unsigned int), 0, 0, 0);
 	else if (g_form.specifier == 'p')
-		parse_ptr();
+		parse_ptr(va_arg(g_arg_list, size_t));
 	else if (g_form.specifier == 's')
-		parse_str();
+		parse_str(va_arg(g_arg_list, char *));
 	else if (g_form.specifier == 'c')
-		parse_char();
+		parse_char(va_arg(g_arg_list, int));
 	else if (g_form.specifier == '%')
-		parse_percent();
-	else if (g_form.specifier == 'n')
-		parse_n();
-	return;
+		parse_char('%');
+	return ;
 }
