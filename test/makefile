@@ -1,6 +1,7 @@
-CFLAGS = -Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic -g
+SRC = ../src/*.c
 
 test:
 	(cd ../src/; make)
-	cc $(CFLAGS) main.c -L ../src  -lftprintf -o main
+	cc $(CFLAGS) main.c $(SRC) -o main
 	./main

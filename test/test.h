@@ -6,7 +6,7 @@
 /*   By: jll32 <jll32@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 01:05:20 by jll32             #+#    #+#             */
-/*   Updated: 2020/10/29 17:40:46 by jll32            ###   ########.fr       */
+/*   Updated: 2020/11/04 18:53:55 by jll32            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@ void *ptr = &leet;
 # define TEST_16 "Bla bla %03u", 0
 # define TEST_17 "Bla bla %*.u", 3, 0
 # define TEST_18 "Bla bla %*.3u", 10, 0
+# define TEST_19 "this is just a %040.20d\n" ,0
+# define TEST_20 "this is just a %040d\n", 0
+# define TEST_21 "this is just a %020.1d\n",0
 
 #endif // !TEST_H
 

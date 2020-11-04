@@ -5,11 +5,11 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "clang build and debug active file",
+			"name": "debug active file",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/src/main",
-			"args": [],
+			"program": "${workspaceFolder}/test/main",
+			"args": ["og_printf"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
