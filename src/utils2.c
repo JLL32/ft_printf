@@ -47,6 +47,9 @@ void	ft_putptr(size_t n)
 	char	num[100];
 
 	ft_putnstr("0x", 2);
+	if (n == 0)
+		if (g_form.precision != 0)
+			ft_putnchar('0', 1);
 	i = 0;
 	while (n)
 	{
