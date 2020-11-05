@@ -148,7 +148,8 @@ void *ptr = &leet;
 # define TEST_19 "this is just a %040.20d\n" ,0
 # define TEST_20 "this is just a %040d\n", 0
 # define TEST_21 "this is just a %020.1d\n",0
-
+# define TEST_22 "%.0s", (void *)22
+# define TEST_23 "%p", NULL
 #endif // !TEST_H
 
 
