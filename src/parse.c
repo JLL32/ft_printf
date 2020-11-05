@@ -71,6 +71,8 @@ void	parse_str(char *arg)
 
 	if (arg == NULL)
 		arg = "(null)";
+	if (g_form.precision == 0)
+		arg = "";
 	bytes = ft_strlen(arg);
 	if (g_form.precision >= 0)
 		bytes = (int)ft_strlen(arg) < g_form.precision
