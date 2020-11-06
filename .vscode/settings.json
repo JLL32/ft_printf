@@ -1,6 +1,23 @@
 {
 	"files.associations": {
 		"libftprintf.h": "c"
-	}
+	},
+	"workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#30705b",
+		"activityBar.activeBorder": "#492659",
+		"activityBar.background": "#30705b",
+		"activityBar.foreground": "#e7e7e7",
+		"activityBar.inactiveForeground": "#e7e7e799",
+		"activityBarBadge.background": "#492659",
+		"activityBarBadge.foreground": "#e7e7e7",
+		"statusBar.background": "#214c3e",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#30705b",
+		"titleBar.activeBackground": "#214c3e",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#214c3e99",
+		"titleBar.inactiveForeground": "#e7e7e799"
+	},
+	"peacock.color": "#214c3e"
 	//"peacock.color": "#8dc3a0"
 }
