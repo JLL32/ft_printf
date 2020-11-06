@@ -22,6 +22,11 @@ void	router_lvl(int lvl)
 		get_precision();
 	else if (is_specifier() && lvl <= 4)
 		get_specifier();
+	else if (*g_str == ' ')
+	{
+		g_str++;
+		router_lvl(4);
+	}
 	return ;
 }
 
