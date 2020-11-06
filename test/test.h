@@ -151,6 +151,7 @@ void *ptr = &leet;
 # define TEST_22 "%.0s", (void *)22
 # define TEST_23 "%p", NULL
 # define TEST_24 "% %"
+# define TEST_25 "%.2d", -1
 #endif // !TEST_H
 
 

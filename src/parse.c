@@ -16,7 +16,7 @@ void	parse_signed(long arg, int field_width, size_t padding, size_t len)
 {
 	len = numlen(arg, g_form.specifier);
 	field_width = g_form.width - len + (!g_form.precision && !arg);
-	if (g_form.precision > (int)len)
+	if (g_form.precision > ((int)len - (arg < 0)))
 	{
 		field_width = field_width - (g_form.precision - len) - (arg < 0);
 		padding = g_form.precision - len + (arg < 0);
